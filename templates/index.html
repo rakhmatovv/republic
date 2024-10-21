@@ -1,0 +1,1709 @@
+{%extends 'base.html'%}
+{%block content %}
+  <body data-action="index" data-turbolinks="false">
+    
+    
+   
+    <br><br>
+    <div class="container-fluid">
+      <div class="content-wrapper no-sidebar">
+        <div id="content">
+          <div class="row">
+            <div class="col-md-9 col-xs-12">
+              <a class="page-title" href="/x_female-escorts-in-dubai">
+                <h1>Escorts in Ar-Riadh, UAE</h1>
+              </a>
+              
+              <div
+                class="listings listings-spots listing-spots--minimal border-top padding-top mx-n2 mx-sm-0"
+              >
+                
+
+                <div class="spot"> 
+                  {% for escort in escorts %}
+                    <div class="listing-li listing-li--spot premium thumbs-3 thumbs-mini p-3">
+                      <h2 class="visible-xxs">
+                        <a
+                          class="nostyle-link"
+                          href="{% url 'escorts:escort_detail' escort.id %}"
+                          title="{{ escort.name }} in {{ escort.city }}"
+                          {{escort.name}}
+                        >
+                          {{ escort.name }}, {{ escort.age }}yo {{ escort.city }}
+                          {% if escort.is_premium %}
+                            <span class="badge" data-placement="top" data-toggle="tooltip" title="Premium escort">
+                              <i class="fa fa-star"></i>
+                            </span>
+                          {% endif %}
+                          {% if escort.can_come_to_place %}
+                            <span class="badge" data-placement="top" data-toggle="tooltip" title="Can come to your place">
+                              <i class="fa fa-home"></i>
+                            </span>
+                          {% endif %}
+                        </a>
+                      </h2>
+                
+                      <div class="thumbs">
+                        <div class="main-thumbs">
+                          <a
+                            href="{{ escort.photo1.url }}"
+                            data-lightbox="escort-gallery-{{ forloop.parentloop.counter }}"
+                            data-title="{{ escort.name }}"
+                          >
+                            <span class="img-wrapper premium">
+                              <div class="image-wrapper">
+                                <img
+                                  alt="{{ escort.name }} - escort in {{ escort.city }}"
+                                  class="img-responsive"
+                                  height="208"
+                                  src="{{ escort.photo1.url }}"
+                                  width="200"
+                                />
+                              </div>
+                            </span>
+                          </a>
+                        </div>
+                
+                        <div class="other-thumbs pull-left">
+                          {% if escort.photo2 %}
+                            <div class="thumb thumb-0">
+                              <a
+                                href="{{ escort.photo2.url }}"
+                                data-lightbox="escort-gallery-{{ forloop.parentloop.counter }}"
+                                data-title="{{ escort.name }}"
+                              >
+                                <span class="img-wrapper mini">
+                                  <div class="image-wrapper">
+                                    <img
+                                      alt="{{ escort.name }} photo 2"
+                                      class="img-responsive"
+                                      height="60"
+                                      src="{{ escort.photo2.url }}"
+                                      width="60"
+                                    />
+                                  </div>
+                                </span>
+                              </a>
+                            </div>
+                          {% endif %}
+                          {% if escort.photo3 %}
+                            <div class="thumb thumb-1">
+                              <a
+                                href="{{ escort.photo3.url }}"
+                                data-lightbox="escort-gallery-{{ forloop.parentloop.counter }}"
+                                data-title="{{ escort.name }}"
+                              >
+                                <span class="img-wrapper mini">
+                                  <div class="image-wrapper">
+                                    <img
+                                      alt="{{ escort.name }} photo 3"
+                                      class="img-responsive"
+                                      height="60"
+                                      src="{{ escort.photo3.url }}"
+                                      width="60"
+                                    />
+                                  </div>
+                                </span>
+                              </a>
+                            </div>
+                          {% endif %}
+                          {% if escort.photo4 %}
+                            <div class="thumb thumb-2">
+                              <a
+                                href="{{ escort.photo4.url }}"
+                                data-lightbox="escort-gallery-{{ forloop.parentloop.counter }}"
+                                data-title="{{ escort.name }}"
+                              >
+                                <span class="img-wrapper mini">
+                                  <div class="image-wrapper">
+                                    <img
+                                      alt="{{ escort.name }} photo 4"
+                                      class="img-responsive"
+                                      height="60"
+                                      src="{{ escort.photo4.url }}"
+                                      width="60"
+                                    />
+                                  </div>
+                                </span>
+                              </a>
+                            </div>
+                          {% endif %}
+                        </div>
+                      </div>
+                
+                      <!-- Escort Info -->
+                      <div class="listing-info-wrapper">
+                        <div class="listing-info">
+                          <h2>
+                            <a
+                              class="nostyle-link"
+                              href="{% url 'escorts:escort_detail' escort.id %}"
+                              title="{{ escort.name }} in {{ escort.city }}"
+                            >
+                              {{ escort.name }} in {{ escort.city }}
+                              {% if escort.is_premium %}
+                                <span class="badge" data-placement="top" data-toggle="tooltip" title="Premium escort">
+                                  <i class="fa fa-star"></i>
+                                </span>
+                              {% endif %}
+                            </a>
+                          </h2>
+                          <a class="nostyle-link" href="{% url 'escorts:escort_detail' escort.id %}">
+                            <p>{{ escort.description }}</p>
+                          </a>
+                
+                          <!-- Contact button -->
+                          <p class="no-margin see-more">
+                            <a class="btn btn-dark" href="{% url 'escorts:escort_detail' escort.id %}">
+                              See more &amp; contact
+                            </a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+                
+              
+                
+<!-- экземпляр 1 -->
+            
+              
+<ul class="pagination pagination-lg">
+  {% if page_obj.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+  {% else %}
+      <li class="page-item disabled"><a class="page-link">Previous</a></li>
+  {% endif %}
+
+  {% for num in page_obj.paginator.page_range %}
+      {% if num == page_obj.number %}
+          <li class="page-item active"><a class="page-link">{{ num }}</a></li>
+      {% elif num > page_obj.number|add:'-5' and num < page_obj.number|add:'5' %}
+          <li class="page-item"><a class="page-link" href="?page={{ num }}{% if gender %}&gender={{ gender }}{% endif %}{% if city %}&city={{ city }}{% endif %}{% if nationality %}&nationality={{ nationality }}{% endif %}{% if ethnicity %}&ethnicity={{ ethnicity }}{% endif %}{% if orientation %}&orientation={{ orientation }}{% endif %}">{{ num }}</a></li>
+      {% endif %}
+  {% endfor %}
+
+  {% if page_obj.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+  {% else %}
+      <li class="page-item disabled"><a class="page-link">Next</a></li>
+  {% endif %}
+</ul>
+</div>
+
+
+              <!-- <div class="listings border-top padding-top">
+              
+                <div class="listing-li premium thumbs-3 thumbs-mini">
+                  <h2 class="visible-xxs">
+                    <a
+                      class="nostyle-link"
+                      href="/female-escorts-in-dubai/nicole-550120"
+                      title="Nicole, Russian escort in Dubai (8)"
+                      >Nicole</a
+                    >
+                  </h2>
+                  <div class="thumbs">
+                    <div class="main-thumbs">
+                      <a
+                        class="img pb-photo-link"
+                        href="/female-escorts-in-dubai/nicole-550120"
+                        ><span class="img-wrapper premium"
+                          ><span
+                            class="verified-image text-left small"
+                            title="Photos Verified by Massage Republic"
+                            ><i class="fa fa-check"></i
+                            ><span>Verified photos</span></span
+                          >
+                          <div class="image-wrapper">
+                            <img
+                              alt="Nicole - escort in Dubai Photo 10 of 10"
+                              class="img-responsive"
+                              height="208"
+                              src="images/nicole-russian-escort-in-moscow-3989270_premium.jpg"
+                              width="200"
+                            />
+                          </div> </span
+                      ></a>
+                    </div>
+                    <div class="other-thumbs pull-left">
+                      <div class="thumb thumb-0">
+                        <a
+                          class="img img-responsive pb-photo-link"
+                          href="/female-escorts-in-dubai/nicole-550120"
+                          ><span class="img-wrapper mini"
+                            ><span
+                              class="verified-image text-left small"
+                              title="Photos Verified by Massage Republic"
+                              ><i class="fa fa-check"></i
+                              ><span>Verified photos</span></span
+                            >
+                            <div class="image-wrapper">
+                              <img
+                                alt="Nicole - escort in Dubai Photo 1 of 10"
+                                class="img-responsive"
+                                height="60"
+                                src="images/karina-russian-escort-in-moscow-3975046_mini.jpg"
+                                width="60"
+                              />
+                            </div> </span
+                        ></a>
+                      </div>
+                      <div class="thumb thumb-1">
+                        <a
+                          class="img img-responsive pb-photo-link"
+                          href="/female-escorts-in-dubai/nicole-550120"
+                          ><span class="img-wrapper mini"
+                            ><span
+                              class="verified-image text-left small"
+                              title="Photos Verified by Massage Republic"
+                              ><i class="fa fa-check"></i
+                              ><span>Verified photos</span></span
+                            >
+                            <div class="image-wrapper">
+                              <img
+                                alt="Nicole - escort in Dubai Photo 2 of 10"
+                                class="img-responsive"
+                                height="60"
+                                src="images/karina-russian-escort-in-moscow-3975058_mini.jpg"
+                                width="60"
+                              />
+                            </div> </span
+                        ></a>
+                      </div>
+                      <div class="thumb thumb-2">
+                        <a
+                          class="img img-responsive pb-photo-link"
+                          href="/female-escorts-in-dubai/nicole-550120"
+                          ><span class="img-wrapper mini"
+                            ><span
+                              class="verified-image text-left small"
+                              title="Photos Verified by Massage Republic"
+                              ><i class="fa fa-check"></i
+                              ><span>Verified photos</span></span
+                            >
+                            <div class="image-wrapper">
+                              <img
+                                alt="Nicole - escort in Dubai Photo 3 of 10"
+                                class="img-responsive"
+                                height="60"
+                                src="images/karina-russian-escort-in-moscow-3975050_mini.jpg"
+                                width="60"
+                              />
+                            </div> </span
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="listing-info-wrapper">
+                    <div class="listing-info">
+                      <h2>
+                        <a
+                          class="nostyle-link"
+                          href="/female-escorts-in-dubai/nicole-550120"
+                          title="Nicole, Russian escort in Dubai (8)"
+                          >Nicole</a
+                        >
+                      </h2>
+                      <a
+                        class="nostyle-link"
+                        href="/female-escorts-in-dubai/nicole-550120"
+                      >
+                        <p>
+                          If we haven’t met yet, you may need to prepare
+                          yourself as I’m not for the faint of heart – I don’t
+                          hold back in the bedroom, if you know what I mean. My
+                          body is the perfect playground and I love to play!
+                        </p>
+                      </a>
+                      <p class="no-margin see-more">
+                        <a
+                          class="btn btn-dark"
+                          href="/female-escorts-in-dubai/nicole-550120"
+                          >See more &amp; contact</a
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              
+              </div>
+              
+            </div> -->
+
+
+
+
+
+            <!-- strem darkor ne -->
+            <!-- <div class="col-md-3 hidden-sm hidden-xs">
+              <div class="stream-sidebar">
+                <div
+                  class="subscribe-btn-wrapper subscribe-btn-wrapper--small-right"
+                >
+                  <a
+                    class="btn btn-primary btn-lg"
+                    data-btn-link=""
+                    href="/register"
+                    ><i class="fa fa-newspaper"></i> Subscribe</a
+                  >
+                </div>
+                <h3><a href="/female-escort-news-in-dubai">What's new?</a></h3>
+                <ul class="activity-stream activity-records-mini">
+                  <li>
+                    <div class="activity-record new-review mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-heart2"></i>New review for
+                          <a
+                            title="Hanna- Philippines🦋- Independent🦋, Filipino escort in Dubai"
+                            href="/female-escorts-in-dubai/hanna-philippines-independent"
+                            >Hanna- Philippines🦋- Independent🦋</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/hanna-philippines-independent"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Hanna- Philippines🦋- Independent🦋 - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/hanna-filipino-new-in-dubai-filipino-escort-in-dubai-9562182_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="review-description">
+                            <p>
+                              Saw Hanna today. She looks exactly like her
+                              pictures. Lovely girl who knows how to treat a
+                              man.…
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-review mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-heart2"></i>New review for
+                          <a
+                            title="Emma Dxb, Swiss escort in Dubai"
+                            href="/female-escorts-in-dubai/emmadxb-swiss"
+                            >Emma Dxb</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/emmadxb-swiss"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Emma Dxb - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/emma-dxb-swiss-escort-in-dubai-9031584_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="review-description">
+                            <p>
+                              Emma is a very nice, beautiful and sweet girl. She
+                              treated me like a king. I had a lot of fun with…
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="webcam-ad">
+                    <div class="activity-record">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-video flicker"></i>Live cam with
+                          <a
+                            href="https://go.massagerepublic.com/cGVyZm9ybWVyPVlzYU1hcmllbCZzb3VyY2U9eF9mZW1hbGUtZXNjb3J0cy1p
+bi1kdWJhaQ==
+"
+                            rel="nofollow"
+                            target="_blank"
+                            >YsaMariel</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="https://go.massagerepublic.com/cGVyZm9ybWVyPVlzYU1hcmllbCZzb3VyY2U9eF9mZW1hbGUtZXNjb3J0cy1p
+bi1kdWJhaQ==
+"
+                            rel="nofollow"
+                            ><span class="img-wrapper mini"
+                              ><img
+                                alt="YsaMariel"
+                                class="img-responsive"
+                                height="53"
+                                src="images/f198f01f723ed0b18ae9cb9db4c1356a_glamour_320x240.jpg"
+                                width="50" /></span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          𝓗𝓮𝓵𝓵𝓸, 𝓮𝓿𝓮𝓻𝔂𝓸𝓷𝓮 𝓲𝓶 𝔂𝓼𝓪𝓶𝓪𝓻𝓲𝓮𝓵, 𝓲𝓯 𝔂𝓸𝓾𝓻'𝓮 𝓵𝓸𝓸𝓴𝓲𝓷𝓰 𝓯𝓸𝓻
+                          𝓯𝓾𝓷 𝓪𝓷𝓭 𝓮𝔁𝓬𝓲𝓽𝓲𝓷𝓰 𝓮𝔁𝓹𝓮𝓻𝓲𝓮𝓷𝓬𝓮 𝔂𝓸𝓾'𝓿𝓮 𝓬𝓸𝓶𝓮 𝓽𝓸 𝓽𝓱𝓮…
+                        </div>
+                      </div>
+                    </div>
+                    <div class="non-escort">non-escort services</div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-review mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-heart2"></i>New review for
+                          <a
+                            title="Annie Best Service, Russian escort in Dubai"
+                            href="/female-escorts-in-dubai/annie-best-service"
+                            >Annie Best Service</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/annie-best-service"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Annie Best Service - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/annie-best-service-japanese-escort-in-dubai-9221378_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="review-description">
+                            <p>
+                              Best experience ever! Met her 3 times on the same
+                              week because she is the best in the world.…
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-review mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-heart2"></i>New review for
+                          <a
+                            title="Misa Anal Best Service in Downtown, Vietnamese escort in Dubai"
+                            href="/female-escorts-in-dubai/misa-anal-best-service-in-downtown"
+                            >Misa Anal Best Service in Downtown</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/misa-anal-best-service-in-downtown"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Misa Anal Best Service in Downtown - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/misa-anal-best-service-in-downtown-vietnamese-escort-in-dubai-7565288_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="review-description">
+                            <p>
+                              Met Misa earlier this week. An absolute stellar
+                              experience. The location is nice and quiet, comms…
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="webcam-ad">
+                    <div class="activity-record">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-video flicker"></i>Live cam with
+                          <a
+                            href="https://go.massagerepublic.com/cGVyZm9ybWVyPUthcmxpZUtpbmdzdG9uJnNvdXJjZT14X2ZlbWFsZS1lc2Nv
+cnRzLWluLWR1YmFp
+"
+                            rel="nofollow"
+                            target="_blank"
+                            >KarlieKingston</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="https://go.massagerepublic.com/cGVyZm9ybWVyPUthcmxpZUtpbmdzdG9uJnNvdXJjZT14X2ZlbWFsZS1lc2Nv
+cnRzLWluLWR1YmFp
+"
+                            rel="nofollow"
+                            ><span class="img-wrapper mini"
+                              ><img
+                                alt="KarlieKingston"
+                                class="img-responsive"
+                                height="53"
+                                src="images/37974db1db488858f73b8eee522317fe_glamour_320x240.jpg"
+                                width="50" /></span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          I am a simple and charismatic girl who will amaze you
+                          with her great moves. My voice can captivate…
+                        </div>
+                      </div>
+                    </div>
+                    <div class="non-escort">non-escort services</div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-review mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-heart2"></i>New review for
+                          <a
+                            title="Clara Algerian/FR Independant, French escort in Dubai"
+                            href="/female-escorts-in-dubai/clara-algerian-fr-independant"
+                            >Clara Algerian/FR Independant</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/clara-algerian-fr-independant"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Clara Algerian/FR Independant - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/clara-algerian-independant-french-escort-in-dubai-8882146_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="review-description">
+                            <p>
+                              Met Clara a couple of months ago! She is super
+                              sweet and super beautiful. Loved her giggly
+                              energy,…
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-review mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-heart2"></i>New review for
+                          <a
+                            title="+15 VIP young fresh girls, Russian escort in Dubai"
+                            href="/female-escorts-in-dubai/the-15-vip-young-fresh-girls"
+                            >+15 VIP young fresh girls</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/the-15-vip-young-fresh-girls"
+                            ><span class="img-wrapper mini">
+                              <div class="image-wrapper">
+                                <img
+                                  alt="+15 VIP young fresh girls - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/15-vip-young-fresh-girls-russian-escort-in-dubai-9627370_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="review-description">
+                            <p>
+                              On my latest trip to Dubai, I booked a companion
+                              through your agency, and it was an experience to…
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-review mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-heart2"></i>New review for
+                          <a
+                            title="🦋Lesbian Show🦋Mila🦋Windy🦋, Singaporean escort in Dubai"
+                            href="/female-escorts-in-dubai/lesbian-show-mila-windy"
+                            >🦋Lesbian Show🦋Mila🦋Windy🦋</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/lesbian-show-mila-windy"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="🦋Lesbian Show🦋Mila🦋Windy🦋 - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/lesbian-show-mila-windy-singaporean-escort-in-dubai-9602934_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="review-description">
+                            <p>
+                              😜 wow, meet my lovely friend Mila and she
+                              introduced Windy. These ladies were super. Both
+                              sucked…
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-review mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-heart2"></i>New review for
+                          <a
+                            title="Sophia Luxury GFE &amp; PSE (Independent), Romanian escort in Dubai"
+                            href="/female-escorts-in-dubai/sophia-luxury-gfe-pse-independent"
+                            >Sophia Luxury GFE &amp; PSE (Independent)</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/sophia-luxury-gfe-pse-independent"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Sophia Luxury GFE &amp; PSE (Independent) - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/sophia-luxury-gfe-pse-independent-romanian-escort-in-dubai-9718818_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="review-description">
+                            <p>Gorgeous lady, perfect skills</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-review mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-heart2"></i>New review for
+                          <a
+                            title="🦋LynLyn in TECOM Alone.RIM.CIM.NURU 🦋, Vietnamese escort in Dubai"
+                            href="/female-escorts-in-dubai/lynlyn-in-tecom-alone-rim-cim-nuru"
+                            >🦋LynLyn in TECOM Alone.RIM.CIM.NURU 🦋</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/lynlyn-in-tecom-alone-rim-cim-nuru"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="🦋LynLyn in TECOM Alone.RIM.CIM.NURU 🦋 - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/lynlyn-in-tecom-alone-rim-cim-nuru-chinese-escort-in-dubai-8574678_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="review-description">
+                            <p>
+                              I have visited LynLyn recently, nice lication and
+                              room, very friendly and passionate service, super…
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-review mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-heart2"></i>New review for
+                          <a
+                            title="Hot&amp;Sexy Indian milf for Bhabhi lovers, Indian escort in Dubai"
+                            href="/female-escorts-in-dubai/hot-sexy-indian-milf-for-bhabhi-lovers"
+                            >Hot&amp;Sexy Indian milf for Bhabhi lovers</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/hot-sexy-indian-milf-for-bhabhi-lovers"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Hot&amp;Sexy Indian milf for Bhabhi lovers - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/hot-sexy-indian-milf-indian-escort-in-dubai-8724590_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="review-description">
+                            <p>
+                              Perhaps the one Indian lady who was really good
+                              with me, super sexy and naughty. We kissed and…
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-review mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-heart2"></i>New review for
+                          <a
+                            title="Squirter Annabella, Cuban escort in Dubai"
+                            href="/female-escorts-in-dubai/squirter-annabella"
+                            >Squirter Annabella</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/squirter-annabella"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Squirter Annabella - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/squirter-annabella-cuban-escort-in-dubai-9684788_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="review-description">
+                            <p>
+                              Having met Annabella many times has always been
+                              great. She’s amazing in bed and she will always
+                              aim…
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-review mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-heart2"></i>New review for
+                          <a
+                            title="Shally - Nuru massage. Deepthroat., Malaysian escort in Dubai"
+                            href="/female-escorts-in-dubai/shally-nuru-massage-deepthroat"
+                            >Shally - Nuru massage. Deepthroat.</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/shally-nuru-massage-deepthroat"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Shally - Nuru massage. Deepthroat. - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/shally-nuru-massage-deepthroat-malaysian-escort-in-dubai-7123628_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="review-description">
+                            <p>
+                              I met this sexy girl yesterday. She satisfied me
+                              so much at her house. I have no words.
+                              ⭐⭐⭐⭐⭐⭐⭐…
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-review mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-heart2"></i>New review for
+                          <a
+                            title="Squirt Queen Valeria New number, Spanish escort in Dubai"
+                            href="/female-escorts-in-dubai/squirt-queen-valeria-new-number"
+                            >Squirt Queen Valeria New number</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/squirt-queen-valeria-new-number"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Squirt Queen Valeria New number - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/squirt-queen-valeria-martin-business-bay-spanish-escort-in-dubai-9715078_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="review-description">
+                            <p>
+                              Met vale a few weeks ago in the cozy flat… perfect
+                              and easy access … she was nice and polite. She…
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-review mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-heart2"></i>New review for
+                          <a
+                            title="Mila🦚deepthroat,Nuru,GFE,POPPERS, Singaporean escort in Dubai"
+                            href="/female-escorts-in-dubai/mila-deepthroat-nuru-gfe-poppers"
+                            >Mila🦚deepthroat,Nuru,GFE,POPPERS</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/mila-deepthroat-nuru-gfe-poppers"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Mila🦚deepthroat,Nuru,GFE,POPPERS - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/mila-deepthroat-nuru-rimming-singaporean-escort-in-dubai-8560046_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="review-description">
+                            <p>
+                              I met with Mila many times.She is pure class.I had
+                              domination session and also MMF.where she called…
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-listing mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-certificate"></i>New escort
+                          <a
+                            title="Sexy Young Maria, Russian escort in Dubai"
+                            href="/female-escorts-in-dubai/sexy-young-maria"
+                            >Sexy Young Maria</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/sexy-young-maria"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Sexy Young Maria - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/sexy-young-maria-russian-escort-in-dubai-9724982_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          Hello, My name is Maria and I'm young, fresh sweet
+                          escort! I'm a very sensual girl who loves to…
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-listing mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-certificate"></i>New escort
+                          <a
+                            title="Indian Model Malaika, Indian escort in Dubai"
+                            href="/female-escorts-in-dubai/indian-model-malaika-indian-indian"
+                            >Indian Model Malaika</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/indian-model-malaika-indian-indian"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Indian Model Malaika - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/indian-model-malaika-indian-escort-in-dubai-9723100_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          Hi Everyone, I am Malaika from India now living in
+                          Dubai for an exotic experience for my clients. I…
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-listing mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-certificate"></i>New escort
+                          <a
+                            title="Tina Full Service, Filipino escort in Dubai"
+                            href="/female-escorts-in-dubai/tina-full-service-asian-filipino"
+                            >Tina Full Service</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/tina-full-service-asian-filipino"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Tina Full Service - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/tina-full-service-filipino-escort-in-dubai-9718920_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          Hello gentlemen! My name is Tina , and I am 25 years
+                          old. . My service: - GFE - Mat oil massage -…
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-listing mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-certificate"></i>New escort
+                          <a
+                            title="Hari, South Korean escort in Dubai (2)"
+                            href="/female-escorts-in-dubai/hari-asian-south-korean"
+                            >Hari</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/hari-asian-south-korean"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Hari - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/hari-south-korean-escort-in-dubai-9718772_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          Xin ch�&nbsp;o các quý ông 💋 Tôi vừa mới đến Dubai từ
+                          h�&nbsp;n quốc mix Việt Nam 🇻🇳 Tôi l�&nbsp; một người
+                          phụ nữ…
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-listing mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-certificate"></i>New escort
+                          <a
+                            title="Semll, Thai escort in Dubai"
+                            href="/female-escorts-in-dubai/semll"
+                            >Semll</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/semll"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Semll - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/semll-thai-escort-in-dubai-9721924_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          💋💋 Hello guys! I am Semll and I am ready to serve
+                          you with the best services in Dubai. I am 22…
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-listing mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-certificate"></i>New escort
+                          <a
+                            title="🦋Sofia🦋 alone.riming.toys.nuru, Vietnamese escort in Dubai"
+                            href="/female-escorts-in-dubai/sofia-alone-riming-toys-nuru"
+                            >🦋Sofia🦋 alone.riming.toys.nuru</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/sofia-alone-riming-toys-nuru"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="🦋Sofia🦋 alone.riming.toys.nuru - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/sofia-vietnamese-escort-in-dubai-9713324_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          just arrived in town🥰💦💦 Hi, I am sofia a high class
+                          girl providing outcall and incall services,…
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-listing mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-certificate"></i>New escort
+                          <a
+                            title="Dakota, Polish escort in Dubai (4)"
+                            href="/female-escorts-in-dubai/dakota-polish"
+                            >Dakota</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/dakota-polish"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Dakota - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/dakota-polish-escort-in-dubai-9712438_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          If you are looking for a girl who enjoys being with
+                          you and welcomes you with a smile, this is me.…
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-listing mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-certificate"></i>New escort
+                          <a
+                            title="❣️Juilya independent hot/❣️800, Turkish escort in Dubai"
+                            href="/female-escorts-in-dubai/juilya-independent-hot-800"
+                            >❣️Juilya independent hot/❣️800</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/juilya-independent-hot-800"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="❣️Juilya independent hot/❣️800 - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/big-boobs-juilya-turkish-escort-in-dubai-9714034_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          Hello lovely I'm from turkiye I love sex, sex is a
+                          hobby for me. My photos are all real, don't…
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-listing mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-certificate"></i>New escort
+                          <a
+                            title="Sawsan, Moroccan escort in Dubai"
+                            href="/female-escorts-in-dubai/sawsan-moroccan"
+                            >Sawsan</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/sawsan-moroccan"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Sawsan - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/sawsan-moroccan-escort-in-dubai-9709962_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          Hello, I'm sawsan a luxury escort. I'm a high class
+                          moroccan companion who reserves herself for…
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-listing mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-certificate"></i>New escort
+                          <a
+                            title="Sofia18y, Sexy Teen, Best Gfe, Russian escort in Dubai"
+                            href="/female-escorts-in-dubai/sofia18y-sexy-teen-best-gfe"
+                            >Sofia18y, Sexy Teen, Best Gfe</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/sofia18y-sexy-teen-best-gfe"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Sofia18y, Sexy Teen, Best Gfe - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/sofia18y-sexy-teen-best-gfe-russian-escort-in-dubai-9708976_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          My name is Sofia I'm a high class escort providing
+                          passionate girlfriend experience. I'm 167cm and…
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-listing mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-certificate"></i>New escort
+                          <a
+                            title="Hot Girls besst service, Turkish escort in Dubai"
+                            href="/female-escorts-in-dubai/hot-girls-besst-service"
+                            >Hot Girls besst service</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/hot-girls-besst-service"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Hot Girls besst service - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/hot-girls-turkish-escort-in-dubai-9701922_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          Hello gentlemen ☺️ independent 💯 % real photo the
+                          best service in your life!!!! Im from turkey 🇹🇷…
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-listing mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-certificate"></i>New escort
+                          <a
+                            title="Ruamy, Malaysian escort in Dubai (2)"
+                            href="/female-escorts-in-dubai/ruamy-c7d0b66e-57d9-4da9-a78a-f971b46bf6bf"
+                            >Ruamy</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/ruamy-c7d0b66e-57d9-4da9-a78a-f971b46bf6bf"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Ruamy - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/ruamy-malaysian-escort-in-dubai-9701678_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          Imagine an elegant person with a graceful posture. My
+                          long silky hair gently curls, and my eyes,…
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-listing mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-certificate"></i>New escort
+                          <a
+                            title="Amina, Russian escort in Dubai (8)"
+                            href="/female-escorts-in-dubai/amina-23b7f3be-7ccf-4fb0-9929-b253b8c3bc17"
+                            >Amina</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/amina-23b7f3be-7ccf-4fb0-9929-b253b8c3bc17"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Amina - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/amina-russian-escort-in-dubai-9699924_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          Hello, dear gentlemen! My name is Amina and I am the
+                          perfect blend of sweetness and spice. My hole…
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-listing mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-certificate"></i>New escort
+                          <a
+                            title="Neha Hottie, Pakistani escort in Dubai"
+                            href="/female-escorts-in-dubai/neha-hottie"
+                            >Neha Hottie</a
+                          >
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/neha-hottie"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Neha Hottie - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/neha-hottie-pakistani-escort-in-dubai-9697366_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          Hello, boys! My name is Neha. I'm 23 years old and
+                          from Pakistan. I'm here to be the treat you need…
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="activity-record new-question-answered mini">
+                      <div class="activity-row">
+                        <div class="headline h3">
+                          <i class="fa fa-question-circle"></i
+                          ><a
+                            title="Hari, South Korean escort in Dubai (2)"
+                            href="/female-escorts-in-dubai/hari-asian-south-korean"
+                            >Hari</a
+                          >
+                          answered a question
+                        </div>
+                        <div class="photo">
+                          <a
+                            class="pb-photo-link"
+                            href="/female-escorts-in-dubai/hari-asian-south-korean"
+                            ><span class="img-wrapper mini"
+                              ><span
+                                class="verified-image text-left small"
+                                title="Photos Verified by Massage Republic"
+                                ><i class="fa fa-check"></i
+                                ><span>Verified photos</span></span
+                              >
+                              <div class="image-wrapper">
+                                <img
+                                  alt="Hari - escort in Dubai"
+                                  class="img-responsive"
+                                  height="60"
+                                  src="images/hari-south-korean-escort-in-dubai-9718772_mini.jpg"
+                                  width="60"
+                                />
+                              </div> </span
+                          ></a>
+                        </div>
+                        <div class="activity-content">
+                          <div class="listing-question">
+                            <p class="question">You do anal sex?</p>
+                            <p class="answer">Yeah dear</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+                <div class="padding-left">
+                  <a href="/female-escort-news-in-dubai">See more</a>
+                </div>
+              </div>
+            </div> -->
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="fb-root"></div>
+   
+   
+    <div class="modal text-center" id="age-check">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content p-0 pt-3">
+          <div class="logo">Massage Republic</div>
+          <div class="modal-body">
+            <p class="age-check-warning mb-3">
+              WARNING: This website contains explicit adult material.
+            </p>
+            <p class="text-left">
+              You may only enter this website if you are at least 18 years old
+              (or the age of majority in the country you live in). If you are
+              accessing this website from a country which prohibits access to
+              adult content or any associated activities, you do so at your own
+              risk.
+            </p>
+            <div
+              class="d-flex justify-content-center align-items-center gap-4 py-3"
+            >
+              <button
+                class="btn btn-primary btn-lg fw-bold"
+                data-age-confirm-btn=""
+              >
+                YES - Enter</button
+              ><a class="leave underline" href="https://google.com/"
+                >NO - Leave to Google</a
+              >
+            </div>
+          </div>
+          <div class="modal-footer" style="background-color: #404040">
+            <p class="text-muted text-center mb-0" style="font-size: 80%">
+              This website only provides a service which allows adult
+              individuals to advertise their time and companionship to other
+              adult individuals. It does not not provide a booking service,
+              arrange meetings or take payment on behalf of an advertiser (or
+              any commission from them). It is your responsibility to comply
+              with local laws. <br />This site uses cookies. By continuing to
+              browse the site, you are agreeing to our use of cookies.<br />
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
+{%endblock%}

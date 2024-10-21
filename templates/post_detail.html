@@ -1,0 +1,421 @@
+{%extends 'base.html'%}
+<!DOCTYPE html>
+<!-- Подключение Font Awesome через CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+{%block content %}
+<html lang="en">
+<style>
+    .listing-photos-sm-plus {
+        display: flex;
+        flex-wrap: wrap; /* Добавляем возможность оборачивания */
+        gap: 10px; /* Отступы между фотографиями */
+      }
+      
+      .listing-photos-sm-plus .col-lg-6 {
+        flex: 0 0 calc(50% - 10px); /* Каждый элемент будет занимать 50% ширины контейнера с отступами */
+        margin-bottom: 15px; /* Отступы снизу */
+      }
+      
+      @media (max-width: 767px) {
+        .listing-photos-sm-plus .col-lg-6 {
+          flex: 0 0 100%; /* На малых экранах элементы будут занимать всю ширину */
+        }
+      }
+      
+</style>
+<style>
+    .list-group {
+        display: flex; /* Use flexbox for layout */
+        flex-direction: column; /* Default to vertical layout */
+    }
+    
+    .list-group-item {
+        margin: 5px 0; /* Space between items */
+        text-align: center; /* Center items */
+    }
+    
+    /* Styles for mobile devices */
+    @media (max-width: 576px) { /* Adjust the breakpoint as needed */
+        .list-group {
+            flex-direction: row; /* Change to horizontal layout on mobile */
+            flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+            justify-content: space-around; /* Space items evenly */
+        }
+    
+        .list-group-item {
+            flex: 1 0 45%; /* Allow items to grow and take up available space */
+            max-width: 120px; /* Limit max width for each item */
+        }
+    }
+    
+</style>
+        
+    </head>
+    <body data-action="show" data-turbolinks="false">
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-49CRE37SFG"></script>
+        <script data-turbolinks-eval="false">
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'G-49CRE37SFG');
+        </script>
+        <script>
+            this.app || (this.app = {});
+            this.app.data || (this.app.data = {});
+            this.app.data.locale = 'en';
+            this.app.data.genderKey = "female";
+            this.app.domain = 'massagerepublic.com';
+            this.app.accountEmail = null;
+            this.app.location = {
+                "name": "Dubai",
+                "id": 410,
+                "url": "dubai"
+            };
+            window.location.hostname.includes("cloudfront.net") && window.location.replace("https://massagerepublic.com" + window.location.pathname);
+        </script>
+        <div class="list-group list-group-dark">
+            <a class="list-group-item ajax-overlay contact-phone track-event" data-modal-dialog-class="modal-md" data-track="contact/phone-reveal/UAE free-listing-contact/phone-reveal/UAE" data-url="/action/listings/kristi-and-darina/show_phone" href="/action/listings/kristi-and-darina/show_phone">
+                <span class="action-wrapper">
+                    <i class="fa-brands fa-square-whatsapp" style="color: white;"></i>
+                    <span class="sr-only-xxs">Phone</span>
+                </span>
+            </a>
+            <a class="list-group-item ajax-overlay send-message" data-modal-dialog-class="modal-md" data-overlay-class="user-action-modal" href="/action/listings/kristi-and-darina/listing_messages/new">
+                <span class="action-wrapper">
+                    <i class="fa fa-envelope2 fa-fw"></i>
+                    <span class="sr-only-xxs">Message</span>
+                </span>
+            </a>
+            <a class="list-group-item contact-website track-event" data-click-stat="/action/listings/kristi-and-darina/click_stat" data-track="contact/website-click/UAE free-listing-contact/website-click/UAE" href="https://t.me/FreyaagencyEscort?utm_campaign=MassageRepublic&amp;utm_medium=MassageRepublicProfile&amp;utm_source=MassageRepublic" rel="external noopener nofollow" target="_blank">
+                <span>
+                    <i class="fa fa-globe-asia fa-fw"></i>
+                    <span class="sr-only-xxs">Website</span>
+                </span>
+            </a>
+            <a class="list-group-item ajax-overlay ask-question" data-modal-dialog-class="modal-md" data-overlay-class="user-action-modal" href="/action/listings/kristi-and-darina/listing_questions/new">
+                <i class="fa fa-question-circle fa-fw"></i>
+                <span class="sr-only-xxs">Ask a question</span>
+            </a>
+            <a class="list-group-item ajax-overlay add-review" data-modal-dialog-class="modal-md" data-overlay-class="user-action-modal" href="/action/listings/kristi-and-darina/reviews/new">
+                <i class="fa fa-heart2 fa-fw"></i>
+                <i class="fa fa-pencil-alt"></i>
+                <span class="sr-only-xxs">Add a review</span>
+            </a>
+        </div>
+        
+    </div>
+        <div class="container-fluid">
+            <div class="content-wrapper no-sidebar">
+                <div id="content">
+                    <div class="listing-title title visible-xs">
+                        <a class="listing-bookmark-toggle" data-is-listing-bookmarked="no" href="/action/listings/sabrina-white-belarusian/favourite">
+                            <i class="fa fa-bookmark fa-fw fa-lg"></i>
+                            <span class="sr-only">Add bookmark</span>
+                        </a>
+                        <a href="/female-escorts-in-dubai/sabrina-white-belarusian">
+                            <h1>{{escort.name}}</h1>
+                        </a>
+                        <div class="clearfix"></div>
+                    </div>
+                    <article data-listing="">
+                            <div class="row">
+                                
+                                <div class="col-sm-9 col-sm-push-3 col-lg-7 col-lg-push-5" id="listing-content">
+                                    <div class="visible-xs pb-thumbnails">
+                                        <div class="listing-photos-xs">
+                                            {% for photo_url in photos %}
+                                            <a class=" pb-photo-link" href="{{ photo_url.url }}">
+                                                <span class="img-wrapper listing">
+                                                    <span class="verified-image text-left small" title="Photos Verified by Massage Republic">
+                                                        <i class="fa fa-check"></i>
+                                                        <span>Verified photos</span>
+                                                    </span>
+                                                    <div class="image-wrapper">
+                                                        <img alt="Sabrina - escort agency in Dubai Photo 1 of 7" class="img-responsive" data-original-height="1800" data-original-width="1200" data-thumb-url="https://d18fr84zq3fgpm.cloudfront.net/sabrina-belarusian-escort-in-dubai-9154368_basic.jpg" height="327" src="{{escort.photo1.url}}" width="238"/>
+                                                    </div>
+                                                </span>
+                                            </a>
+                                            {% endfor %}
+                                            <!-- <a class=" pb-photo-link" href="{{escort.photo2.url}}">
+                                                <span class="img-wrapper listing">
+                                                    <span class="verified-image text-left small" title="Photos Verified by Massage Republic">
+                                                        <i class="fa fa-check"></i>
+                                                        <span>Verified photos</span>
+                                                    </span>
+                                                    <div class="image-wrapper">
+                                                        <img alt="Sabrina - escort agency in Dubai Photo 2 of 7" class="img-responsive" data-original-height="1800" data-original-width="1200" data-thumb-url="https://d18fr84zq3fgpm.cloudfront.net/sabrina-belarusian-escort-in-dubai-9154370_basic.jpg" height="327" src="{{escort.photo2.url}}" width="238"/>
+                                                    </div>
+                                                </span>
+                                            </a>
+                                            <a class=" pb-photo-link" href="{{escort.photo3.url}}">
+                                                <span class="img-wrapper listing">
+                                                    <span class="verified-image text-left small" title="Photos Verified by Massage Republic">
+                                                        <i class="fa fa-check"></i>
+                                                        <span>Verified photos</span>
+                                                    </span>
+                                                    <div class="image-wrapper">
+                                                        <img alt="Sabrina - escort agency in Dubai Photo 3 of 7" class="img-responsive" data-original-height="1800" data-original-width="1200" data-thumb-url="https://d18fr84zq3fgpm.cloudfront.net/sabrina-belarusian-escort-in-dubai-9154372_basic.jpg" height="327" src="{{escort.photo3.url}}" width="238"/>
+                                                    </div>
+                                                </span>
+                                            </a>
+                                            <a class=" pb-photo-link" href="{{escort.photo4.url}}">
+                                                <span class="img-wrapper listing">
+                                                    <span class="verified-image text-left small" title="Photos Verified by Massage Republic">
+                                                        <i class="fa fa-check"></i>
+                                                        <span>Verified photos</span>
+                                                    </span>
+                                                    <div class="image-wrapper">
+                                                        <img alt="Sabrina - escort agency in Dubai Photo 4 of 7" class="img-responsive" data-original-height="1800" data-original-width="1200" data-thumb-url="https://d18fr84zq3fgpm.cloudfront.net/sabrina-belarusian-escort-in-dubai-9154374_basic.jpg" height="327" src="{{escort.photo4.url}}" width="238"/>
+                                                    </div>
+                                                </span>
+                                            </a><br><br>
+                                            <a class=" pb-photo-link" href="{{escort.photo5.url}}">
+                                                <span class="img-wrapper listing">
+                                                    <span class="verified-image text-left small" title="Photos Verified by Massage Republic">
+                                                        <i class="fa fa-check"></i>
+                                                        <span>Verified photos</span>
+                                                    </span>
+                                                    <div class="image-wrapper">
+                                                        <img alt="Sabrina - escort agency in Dubai Photo 5 of 7" class="img-responsive" data-original-height="1800" data-original-width="1200" data-thumb-url="https://d18fr84zq3fgpm.cloudfront.net/sabrina-belarusian-escort-in-dubai-9154376_basic.jpg" height="327" src="{{escort.photo5.url}}" width="238"/>
+                                                    </div>
+                                                </span>
+                                            </a><br> -->
+                                            <a class=" pb-photo-link" href="{{escort.photo5.url}}">
+                                                <span class="img-wrapper listing">
+                                                    <span class="verified-image text-left small" title="Photos Verified by Massage Republic">
+                                                        <i class="fa fa-check"></i>
+                                                        <span>Verified photos</span>
+                                                    </span>
+                                                    <div class="image-wrapper">
+                                                        <img alt="Sabrina - escort agency in Dubai Photo 5 of 7" class="img-responsive" data-original-height="1800" data-original-width="1200" data-thumb-url="https://d18fr84zq3fgpm.cloudfront.net/sabrina-belarusian-escort-in-dubai-9154376_basic.jpg" height="327" src="{{escort.photo5.url}}" width="238"/>
+                                                    </div>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="description">
+                                        <p>{{escort.description}}</p>
+                                    </div>
+                                    <div class="margin-bottom" id="listing-price">
+                                        <div class="pull-left" data-placement="bottom" data-toggle="tooltip" title="You can come to my place">
+                                            <div class="pull-left text-muted">
+                                                <i class="fa fa-arrow-circle-down fa-fw fa-2x"></i>
+                                            </div>
+                                            <div class="pull-left margin-right">
+                                                <div class="listing-price-label">Incalls per hour from</div>
+                                            {{escort.get_incalls_cost_in_aed|floatformat:2}} AED  <span class='usd-price text-muted'>(US$ {{escort.incalls_cost}} )</span>
+                                            </div>
+                                        </div>
+                                        <div class="pull-left" data-placement="bottom" data-toggle="tooltip" title="I can come to your place">
+                                            <div class="pull-left text-muted">
+                                                <i class="fa fa-arrow-circle-up fa-fw fa-2x"></i>
+                                            </div>
+                                            <div class="pull-left margin-right">
+                                                <div class="listing-price-label">Outcalls per hour from</div>
+                                            {{ escort.get_outcalls_cost_in_aed|floatformat:2 }} AED  <span class='usd-price text-muted'>( US$ {{escort.outcalls_cost}} )</span>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <dl class="languages dl-inline">
+                                        <dt>Languages</dt>
+                                        <dd>
+                                            
+                                            <div class="language-item">
+                                                <span class="lang-name">English</span>
+                                                <span class="lang-value">&nbsp;(Good)</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="dl-inline" id="additional-details">
+                                        <dt>Orientation</dt>
+                                        <dd>{{escort.orientation}}</dd>
+                                        <br>
+                                        <dt>Height</dt>
+                                        <dd>{{escort.height_cm }}</dd><br>
+                                        <dt>Ethnicity</dt>
+                                        <dd>{{escort.ethnicity}}</dd><br>
+                                        <dt>Bust</dt>
+                                        <dd>{{escort.bust_size}}</dd><br>
+                                        <dt>Age</dt>
+                                        <dd>{{escort.age}}</dd><br>
+                                        <dt>Shaved</dt>
+                                        <dd>{{ escort.shaved|yesno:"Yes,No" }}</dd><br>
+                                        <dt>Smokes?</dt>
+                                        <dd>{{ escort.smokes|yesno:"Yes,No" }}</dd><br>
+                                        <dt>Hair color</dt>
+                                        <dd>{{escort.hair_color}}</dd><br>
+                                        <dt>Nationality</dt>
+                                        <dd>{{escort.nationality}}</dd><br>
+                                        <dt>Gender</dt>
+                                        <dd>{{escort.gender}}</dd><br>
+                                        <dt class="dl-city">City</dt>
+                                        <dd class="dl-city">
+                                            <a href="/x_female-escorts-in-dubai">
+                                                {{escort.city}}<br/>
+                                                <!-- <small>UAE</small> -->
+                                            </a>
+                                        </dd>
+                                    </dl><br>
+                                
+                                    <p class="margin-top padding-top border-top">
+                                        <a class="report-link ajax-overlay" data-modal-dialog-class="modal-md" data-overlay-class="user-action-modal" href="/action/listings/sabrina-white-belarusian/reports/new">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-circle fa-stack-2x"></i>
+                                                <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            Report this profile
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="hidden-xs pb-thumbnails col-sm-3 col-sm-pull-9 col-lg-5 col-lg-pull-7">
+                                    <div class="row listing-photos-sm-plus">
+                                        <div class="col-lg-6">
+                                            <a class=" pb-photo-link" href="{{escort.photo1.url}}">
+                                                <span class="img-wrapper listing">
+                                                    <span class="verified-image text-left small" title="Photos Verified by Massage Republic">
+                                                        <i class="fa fa-check"></i>
+                                                        <span>Verified photos</span>
+                                                    </span>
+                                                    <div class="image-wrapper">
+                                                        <img alt="Sabrina - escort agency in Dubai Photo 1 of 7" class="img-responsive" data-original-height="1800" data-original-width="1200" data-thumb-url="https://d18fr84zq3fgpm.cloudfront.net/sabrina-belarusian-escort-in-dubai-9154368_basic.jpg" height="327" src="{{escort.photo1.url}}" width="238"/>
+                                                    </div>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <a class=" pb-photo-link" href="{{escort.photo2.url}}">
+                                                <span class="img-wrapper listing">
+                                                    <span class="verified-image text-left small" title="Photos Verified by Massage Republic">
+                                                        <i class="fa fa-check"></i>
+                                                        <span>Verified photos</span>
+                                                    </span>
+                                                    <div class="image-wrapper">
+                                                        <img alt="Sabrina - escort agency in Dubai Photo 2 of 7" class="img-responsive" data-original-height="1800" data-original-width="1200" data-thumb-url="https://d18fr84zq3fgpm.cloudfront.net/sabrina-belarusian-escort-in-dubai-9154370_basic.jpg" height="327" src="{{escort.photo2.url}}" width="238"/>
+                                                    </div>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-6">
+                                        <a class=" pb-photo-link" href="{{escort.photo3.url}}">
+                                                <span class="img-wrapper listing">
+                                                    <span class="verified-image text-left small" title="Photos Verified by Massage Republic">
+                                                        <i class="fa fa-check"></i>
+                                                        <span>Verified photos</span>
+                                                    </span>
+                                                    <div class="image-wrapper">
+                                                        <img alt="Sabrina - escort agency in Dubai Photo 3 of 7" class="img-responsive" data-original-height="1800" data-original-width="1200" data-thumb-url="https://d18fr84zq3fgpm.cloudfront.net/sabrina-belarusian-escort-in-dubai-9154372_basic.jpg" height="327" src="{{escort.photo3.url}}" width="238"/>
+                                                    </div>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <a class=" pb-photo-link" href="{{escort.photo4.url}}">
+                                                <span class="img-wrapper listing">
+                                                    <span class="verified-image text-left small" title="Photos Verified by Massage Republic">
+                                                        <i class="fa fa-check"></i>
+                                                        <span>Verified photos</span>
+                                                    </span>
+                                                    <div class="image-wrapper">
+                                                        <img alt="Sabrina - escort agency in Dubai Photo 4 of 7" class="img-responsive" data-original-height="1800" data-original-width="1200" data-thumb-url="https://d18fr84zq3fgpm.cloudfront.net/sabrina-belarusian-escort-in-dubai-9154374_basic.jpg" height="327" src="{{escort.photo4.url}}" width="238"/>
+                                                    </div>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <a class=" pb-photo-link" href="{{escort.photo5.url}}">
+                                                <span class="img-wrapper listing">
+                                                    <span class="verified-image text-left small" title="Photos Verified by Massage Republic">
+                                                        <i class="fa fa-check"></i>
+                                                        <span>Verified photos</span>
+                                                    </span>
+                                                    <div class="image-wrapper">
+                                                        <img alt="Sabrina - escort agency in Dubai Photo 5 of 7" class="img-responsive" data-original-height="1800" data-original-width="1200" data-thumb-url="https://d18fr84zq3fgpm.cloudfront.net/sabrina-belarusian-escort-in-dubai-9154376_basic.jpg" height="327" src="{{escort.photo5.url}}" width="238"/>
+                                                    </div>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                    </article>
+                </div>
+            </div>
+        </div>
+        <div id="fb-root"></div>
+        <footer id="footer">
+            <div class="container-fluid">
+                <div class="footer-nav-links">
+                    <ul class="list-inline mb-3 d-flex flex-wrap align-items-start">
+                        <li>
+                            <a href="/forums">Forums</a>
+                        </li>
+                        <li>
+                            <a href="/about">About</a>
+                        </li>
+                        <li>
+                            <a href="https://blog.massagerepublic.com/">Blog</a>
+                        </li>
+                        <li>
+                            <a href="/escort-sign-up?redirect_to=%2Faction%2Flistings%2Fnew">Advertise Escort Services</a>
+                        </li>
+                        <li>
+                            <a href="/help-for-advertisers">Help for Advertisers</a>
+                        </li>
+                        <li>
+                            <a href="/guide-to-seeing-an-escort">Guide to seeing an escort</a>
+                        </li>
+                        <li class="mb-0" style="vertical-align:middle">
+                            <a class="d-inline-flex align-items-center py-0" href="https://trafficking.help/">
+                                <svg class="mr-1" id="a" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 35 47">
+                                    <path d="M2.89,24.48c.62,1.79,1.17,6.49,1.64,8.54.95,4.05,1.63,5.81,2.07,8.15.66,3.47,3.06,5.5,7.23,5.77,4.71.3,8.42-.53,11.79-4.51,3.66-4.34,4.61-6.45,5.35-7.22,1.22-1.27,2.02-2.65,2.04-4.21.02-1.04.23-1.9.96-2.56.82-.74.91-1.64-.1-2.15-1.58-.8-3.07-.1-3.79,1.87-1.18,3.24-1.07,4.77-4.16,4.78-1.93,0-1.89-1.28-2.34-3.96-.56-3.33-.68-7.43.25-12.49.7-3.83.32-7.51.35-11.01.01-1.95-.65-2.89-1.88-2.79-1.3.1-1.53,1.32-1.6,3.67-.07,2.37-.33,3.81-.77,5.83-.44,2.04-.36,4.48-.55,7.34-.08,1.13-.51,1.65-1.3,1.63-.64,0-.98-.66-.98-2.04-.01-5.59-.76-10.47-.77-14.65,0-2.74-.38-3.98-1.65-3.95-1.35.03-1.8,1.22-1.73,3.83.1,3.95.39,6.36.13,10.34-.08,1.19.35,3.17.32,5.69,0,.77-.21.92-.75,1.06-.65.17-1.02-.94-1.24-3.17-.42-4.2-1.56-8.46-2.02-12.86-.18-1.69-.75-2.46-1.84-2.33-1.16.14-1.34,1.21-1.12,3.32.64,6.13.89,11.68,2.08,15.83.25.86.04,1.36-.61,1.58-.99.33-1.43-.13-2.16-1.76-1.33-2.95-1.96-5.67-2.37-7.85-.3-1.59-.51-2.93-1.38-3.31C.04,10.08-.13,11.36.06,12.87c.43,3.49,1.34,7.28,2.83,11.61Z" fill="#373435" fill-rule="evenodd" stroke-width="0"/>
+                                    <path d="M3.28,23.96c.62,1.79,1.17,6.49,1.65,8.54.95,4.05,1.63,5.81,2.07,8.15.66,3.47,3.06,5.5,7.23,5.77,4.71.31,8.42-.53,11.79-4.51,3.66-4.34,4.61-6.45,5.35-7.22,1.22-1.27,2.02-2.65,2.04-4.21.02-1.04.24-1.9.96-2.56.82-.74.91-1.64-.1-2.15-1.58-.8-3.07-.1-3.79,1.87-1.18,3.24-1.07,4.77-4.16,4.78-1.93,0-1.89-1.28-2.34-3.96-.56-3.33-.68-7.43.25-12.49.7-3.83.32-7.51.35-11.01.01-1.95-.65-2.89-1.88-2.79-1.3.1-1.53,1.32-1.6,3.67-.07,2.37-.33,3.81-.77,5.83-.44,2.04-.36,4.48-.55,7.34-.08,1.13-.51,1.65-1.3,1.63-.64,0-.98-.66-.98-2.04-.01-5.59-.76-10.47-.77-14.65,0-2.74-.38-3.98-1.65-3.95-1.35.03-1.8,1.22-1.73,3.83.1,3.95.39,6.36.13,10.34-.08,1.19.35,3.17.32,5.69,0,.77-.21.92-.75,1.06-.65.17-1.02-.94-1.24-3.16-.42-4.2-1.56-8.46-2.02-12.86-.18-1.69-.75-2.46-1.84-2.33-1.16.14-1.34,1.21-1.12,3.32.64,6.13.89,11.68,2.08,15.83.25.86.04,1.36-.61,1.58-.99.33-1.43-.13-2.16-1.76-1.33-2.95-1.96-5.67-2.37-7.85-.3-1.59-.51-2.93-1.38-3.31-1.93-.83-2.1.45-1.92,1.96.43,3.49,1.34,7.28,2.83,11.61Z" fill="red" fill-rule="evenodd" stroke-width="0"/>
+                                </svg>
+                                <span>Stop Human Trafficking</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <p class="footer-smallprint">This website only allows adult individuals to advertise their time and companionship to other adult individuals. We do not provide a booking service nor arrange meetings. Any price indicated relates to time only and nothing else. Any service offered or whatever else that may occur is the choice of consenting adults and a private matter between them. In some countries, individuals do not legally have the choice to decide this; it is your responsibility to comply with local laws.</p>
+                <p class="footer-smallprint">
+                    &copy;2024 Massage Republic <a href="/terms">Terms of Use</a>
+                    | <a href="/privacy">Privacy Policy</a>
+                    | <a href="/gdpr">GDPR</a>
+                    | <a href="/contact-us">Contact Us</a>
+                </p>
+            </div>
+        </footer>
+        <div class="modal text-center" id="age-check">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content p-0 pt-3">
+                    <div class="logo">Massage Republic</div>
+                    <div class="modal-body">
+                        <p class="age-check-warning mb-3">WARNING: This website contains explicit adult material.</p>
+                        <p class="text-left">You may only enter this website if you are at least 18 years old (or the age of majority in the country you live in). If you are accessing this website from a country which prohibits access to adult content or any associated activities, you do so at your own risk.</p>
+                        <div class="d-flex justify-content-center align-items-center gap-4 py-3">
+                            <button class="btn btn-primary btn-lg fw-bold" data-age-confirm-btn="">YES - Enter</button>
+                            <a class="leave underline" href="https://google.com/">NO - Leave to Google</a>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="background-color: #404040">
+                        <p class="text-muted text-center mb-0" style="font-size:80%">
+                            This website only provides a service which allows adult individuals to advertise their time and companionship to other adult individuals. It does not not provide a booking service, arrange meetings or take payment on behalf of an advertiser (or any commission from them). It is your responsibility to comply with local laws.
+<br>This site uses cookies. By continuing to browse the site, you are agreeing to our use of cookies.</br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script data-turbolinks-eval="false">
+            document.addEventListener('DOMContentLoaded', function() {
+                (window.App = window.App || {}).DOMContentLoadedFired = true;
+            });
+        </script>
+    </body>
+</html>
+{%endblock%}
