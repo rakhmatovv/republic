@@ -114,7 +114,7 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
-USD_TO_AED = 3.67  # Пример курса обмена
+USD_TO_AED = 3.67  
 
 
 # Static files (CSS, JavaScript, Images)

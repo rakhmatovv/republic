@@ -1,6 +1,2444 @@
 {%extends 'base.html'%}
 {%block content %}
-  <body data-action="index" data-turbolinks="false">
+ <style>
+            .flicker {
+                -webkit-animation: flicker 1s linear infinite;
+                animation: flicker 1s linear infinite
+            }
+
+            @-webkit-keyframes flicker {
+                0%,70%,to {
+                    opacity: 1
+                }
+
+                35%,50% {
+                    opacity: 0
+                }
+            }
+
+            @keyframes flicker {
+                0%,70%,to {
+                    opacity: 1
+                }
+
+                35%,50% {
+                    opacity: 0
+                }
+            }
+
+            html {
+                font-family: sans-serif;
+                -ms-text-size-adjust: 100%;
+                -webkit-text-size-adjust: 100%;
+                -webkit-tap-highlight-color: transparent;
+                font-size: inherit
+            }
+
+            body,pre {
+                line-height: 1.42857143
+            }
+
+            body {
+                font: 14px/1.7 Helvetica,Arial,sans-serif;
+                background: #333 url(https://d257pz9kz95xf4.cloudfront.net/assets/layout/texture-b9beac30c0dfa74797a20c4f2547cff4c3bc597319acc0c53a60c95abdba3e51.png) top left;
+                margin: 0;
+                color: #fff;
+                background-color: #333
+            }
+
+            footer,header,pre {
+                display: block
+            }
+
+            a {
+                background-color: transparent;
+                color: #f4b827;
+                text-decoration: none
+            }
+
+            a:active,a:hover {
+                outline: 0
+            }
+
+            b {
+                font-weight: 700
+            }
+
+            h1 {
+                margin: .67em 0
+            }
+
+            img {
+                border: 0;
+                vertical-align: middle
+            }
+
+            pre {
+                overflow: auto;
+                font-family: Monaco,Menlo,Consolas,"Courier New",monospace,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+                border-radius: 4px;
+                padding: 9.5px;
+                margin: 0 0 10px;
+                font-size: 13px;
+                word-break: break-all;
+                word-wrap: break-word;
+                color: #474747;
+                background-color: #f5f5f5;
+                border: 1px solid #ccc
+            }
+
+            button,input,select {
+                color: inherit;
+                font: inherit;
+                margin: 0
+            }
+
+            button {
+                overflow: visible;
+                -webkit-appearance: button;
+                cursor: pointer
+            }
+
+            button,select {
+                text-transform: none
+            }
+
+            button::-moz-focus-inner,input::-moz-focus-inner {
+                border: 0;
+                padding: 0
+            }
+
+            input[type=checkbox] {
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                padding: 0;
+                margin: 4px 0 0;
+                margin-top: 1px \9;
+                line-height: normal
+            }
+
+            input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button {
+                height: auto
+            }
+
+            *,:after,:before {
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box
+            }
+
+            button,input,select {
+                font-family: inherit;
+                font-size: inherit;
+                line-height: inherit
+            }
+
+            a:focus,a:hover {
+                color: #dca623;
+                text-decoration: underline
+            }
+
+            a:focus,input[type=checkbox]:focus {
+                outline: 5px auto -webkit-focus-ring-color;
+                outline-offset: -2px
+            }
+
+            .img-responsive {
+                display: block;
+                max-width: 100%;
+                height: auto
+            }
+
+            .sr-only {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                margin: -1px;
+                padding: 0;
+                overflow: hidden;
+                clip: rect(0,0,0,0);
+                border: 0
+            }
+
+            [role=button] {
+                cursor: pointer
+            }
+
+            .h3,h1,h2,h3,h4 {
+                font-weight: 500;
+                line-height: 1.1;
+                color: inherit
+            }
+
+            .h3 {
+                font-family: inherit
+            }
+
+            .h3,h1,h2,h3 {
+                margin-top: 20px
+            }
+
+            .h3,h1,h2,h3,h4,ul {
+                margin-bottom: 10px
+            }
+
+            h4 {
+                font-size: 18px;
+                margin-top: 10px
+            }
+
+            h1 {
+                font-size: 36px
+            }
+
+            h2 {
+                font-size: 30px
+            }
+
+            .h3,h3 {
+                font-size: 24px
+            }
+
+            p {
+                margin: 0 0 10px
+            }
+
+            .lead {
+                margin-bottom: 20px;
+                font-size: 16px;
+                font-weight: 300;
+                line-height: 1.4
+            }
+
+            @media (min-width: 768px) {
+                .lead {
+                    font-size:21px
+                }
+            }
+
+            .small {
+                font-size: 85%
+            }
+
+            .text-left {
+                text-align: left
+            }
+
+            .text-center {
+                text-align: center
+            }
+
+            .text-muted {
+                color: #c2c2c2
+            }
+
+            .listing-li h2,a.page-title h1,ul {
+                margin-top: 0
+            }
+
+            #main-nav,.list-inline {
+                padding-left: 0;
+                list-style: none
+            }
+
+            .list-inline {
+                margin-left: -5px
+            }
+
+            .list-inline>li {
+                display: inline-block;
+                padding-left: 5px;
+                padding-right: 5px
+            }
+
+            abbr[title] {
+                cursor: help;
+                border-bottom: 1px dotted #c2c2c2
+            }
+
+            .container-fluid {
+                margin-right: auto;
+                margin-left: auto;
+                padding-left: 15px;
+                padding-right: 15px
+            }
+
+            .container-fluid:after,.container-fluid:before {
+                content: " ";
+                display: table
+            }
+
+            .container-fluid:after {
+                clear: both
+            }
+
+            .row {
+                margin-left: -15px;
+                margin-right: -15px
+            }
+
+            .row:after,.row:before {
+                content: " ";
+                display: table
+            }
+
+            .row:after {
+                clear: both
+            }
+
+            .col-md-3,.col-md-9,.col-sm-3,.col-sm-6,.col-xs-12 {
+                position: relative;
+                min-height: 1px;
+                padding-left: 15px;
+                padding-right: 15px
+            }
+
+            .col-xs-12 {
+                float: left;
+                width: 100%
+            }
+
+            @media (min-width: 768px) {
+                .col-sm-3,.col-sm-6 {
+                    float:left
+                }
+
+                .col-sm-3 {
+                    width: 25%
+                }
+
+                .col-sm-6 {
+                    width: 50%
+                }
+            }
+
+            @media (min-width: 992px) {
+                .col-md-3,.col-md-9 {
+                    float:left
+                }
+
+                .col-md-3 {
+                    width: 25%
+                }
+
+                .col-md-9 {
+                    width: 75%
+                }
+            }
+
+            label {
+                display: inline-block;
+                max-width: 100%;
+                margin-bottom: 5px;
+                font-weight: 700
+            }
+
+            select[multiple] {
+                height: auto
+            }
+
+            .form-control {
+                display: block;
+                font-size: 14px;
+                line-height: 1.42857143;
+                color: #3d3d3d;
+                width: 100%;
+                height: 34px;
+                padding: 6px 12px;
+                background-color: #fff;
+                background-image: none;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+                transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s
+            }
+
+            .form-control:focus {
+                border-color: #66afe9;
+                outline: 0;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+                box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+            }
+
+            .form-control::-webkit-input-placeholder {
+                color: #777;
+                opacity: 1
+            }
+
+            .form-control::-moz-placeholder {
+                color: #777;
+                opacity: 1
+            }
+
+            .form-control:-ms-input-placeholder,.form-control::-ms-input-placeholder {
+                color: #777;
+                opacity: 1
+            }
+
+            .form-control::-ms-expand {
+                border: 0;
+                background-color: transparent
+            }
+
+            .form-group {
+                margin-bottom: 15px
+            }
+
+            .checkbox {
+                position: relative;
+                display: block;
+                margin-top: 10px;
+                margin-bottom: 10px
+            }
+
+            .checkbox input[type=checkbox] {
+                margin-top: 4px \9;
+                position: static;
+                display: inline;
+                margin-left: 0;
+                margin-right: 10px
+            }
+
+            @media (min-width: 768px) {
+                .form-inline .form-group {
+                    display:inline-block;
+                    margin-bottom: 0;
+                    vertical-align: middle
+                }
+
+                .form-inline .form-control {
+                    display: inline-block;
+                    width: auto;
+                    vertical-align: middle
+                }
+            }
+
+            .btn {
+                display: inline-block;
+                margin-bottom: 0;
+                font-weight: 400;
+                text-align: center;
+                vertical-align: middle;
+                -ms-touch-action: manipulation;
+                touch-action: manipulation;
+                cursor: pointer;
+                background-image: none;
+                border: 1px solid transparent;
+                white-space: nowrap;
+                padding: 6px 12px;
+                font-size: 14px;
+                line-height: 1.42857143;
+                border-radius: 4px;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none
+            }
+
+            .btn:active:focus,.btn:focus {
+                outline: 5px auto -webkit-focus-ring-color;
+                outline-offset: -2px
+            }
+
+            .btn:focus,.btn:hover {
+                color: #333;
+                text-decoration: none
+            }
+
+            .btn:active {
+                outline: 0
+            }
+
+            .btn-primary {
+                color: #333;
+                background-color: #f4b827
+            }
+
+            .btn-primary:focus {
+                color: #333;
+                border-color: #7c5906
+            }
+
+            .btn-primary:active {
+                color: #333
+            }
+
+            .btn-primary:hover {
+                color: #333;
+                background-color: #dd9f0b;
+                border-color: #bb870a
+            }
+
+            .btn-primary:active:focus,.btn-primary:active:hover {
+                color: #333;
+                background-color: #bb870a;
+                border-color: #7c5906
+            }
+
+            .btn-primary:active {
+                background-image: none
+            }
+
+            .btn-lg {
+                padding: 10px 16px;
+                font-size: 18px;
+                line-height: 1.3333333;
+                border-radius: 6px
+            }
+
+            .btn-block {
+                display: block;
+                width: 100%
+            }
+
+            .dropdown {
+                position: relative
+            }
+
+            .dropdown-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                display: none;
+                float: left;
+                min-width: 160px;
+                padding: 5px 0;
+                margin: 2px 0 0;
+                list-style: none;
+                font-size: 14px;
+                text-align: left;
+                background-color: #fff;
+                border: 1px solid #ccc;
+                border: 1px solid rgba(0,0,0,.15);
+                border-radius: 4px;
+                -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+                box-shadow: 0 6px 12px rgba(0,0,0,.175);
+                background-clip: padding-box
+            }
+
+            .dropdown-menu>li>a {
+                display: block;
+                padding: 3px 20px;
+                clear: both;
+                font-weight: 400;
+                line-height: 1.42857143;
+                color: #474747;
+                white-space: nowrap
+            }
+
+            .dropdown-menu>li>a:focus,.dropdown-menu>li>a:hover {
+                text-decoration: none;
+                color: #3a3a3a;
+                background-color: #f5f5f5
+            }
+
+            .dropdown-menu>.active>a,.dropdown-menu>.active>a:focus,.dropdown-menu>.active>a:hover {
+                color: #fff;
+                text-decoration: none;
+                outline: 0;
+                background-color: #f4b827
+            }
+
+            .btn-group {
+                position: relative;
+                display: inline-block;
+                vertical-align: middle
+            }
+
+            .btn-group>.btn {
+                float: left;
+                position: relative
+            }
+
+            .btn-group>.btn:active,.btn-group>.btn:focus,.btn-group>.btn:hover {
+                z-index: 2
+            }
+
+            .btn-group .btn+.btn {
+                margin-left: -1px
+            }
+
+            .btn-group>.btn:first-child {
+                margin-left: 0
+            }
+
+            .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+                border-bottom-right-radius: 0;
+                border-top-right-radius: 0
+            }
+
+            .btn-group>.btn:last-child:not(:first-child) {
+                border-bottom-left-radius: 0;
+                border-top-left-radius: 0
+            }
+
+            .nav:after,.nav:before {
+                content: " ";
+                display: table
+            }
+
+            .nav:after {
+                clear: both
+            }
+
+            .nav {
+                margin-bottom: 0;
+                padding-left: 0;
+                list-style: none
+            }
+
+            .nav>li,.nav>li>a {
+                position: relative;
+                display: block
+            }
+
+            .nav>li>a {
+                padding: 10px 15px
+            }
+
+            .nav>li>a:focus,.nav>li>a:hover {
+                text-decoration: none;
+                background-color: #333
+            }
+
+            .nav-pills>li {
+                float: left
+            }
+
+            .nav-pills>li>a {
+                border-radius: 4px
+            }
+
+            .nav-pills>li+li {
+                margin-left: 2px
+            }
+
+            .nav-pills>li.active>a,.nav-pills>li.active>a:focus,.nav-pills>li.active>a:hover {
+                color: #fff;
+                background-color: #f4b827
+            }
+
+            .nav-stacked>li {
+                float: none
+            }
+
+            .nav-stacked>li+li {
+                margin-top: 2px;
+                margin-left: 0
+            }
+
+            .navbar {
+                position: relative;
+                min-height: 50px;
+                margin-bottom: 20px;
+                border: 1px solid transparent
+            }
+
+            .navbar:after,.navbar:before {
+                content: " ";
+                display: table
+            }
+
+            .navbar:after {
+                clear: both
+            }
+
+            @media (min-width: 768px) {
+                .navbar {
+                    border-radius:4px
+                }
+            }
+
+            .activity-records-mini li:after,.activity-records-mini li:before,.navbar-header:after,.navbar-header:before {
+                content: " ";
+                display: table
+            }
+
+            .activity-records-mini li:after,.navbar-header:after {
+                clear: both
+            }
+
+            @media (min-width: 768px) {
+                .navbar-header {
+                    float:left
+                }
+            }
+
+            .container-fluid>.navbar-header {
+                margin-right: -15px;
+                margin-left: -15px
+            }
+
+            @media (min-width: 768px) {
+                .container-fluid>.navbar-header {
+                    margin-right:0;
+                    margin-left: 0
+                }
+            }
+
+            .navbar-brand {
+                float: left;
+                padding: 15px;
+                font-size: 18px;
+                line-height: 20px;
+                height: 50px
+            }
+
+            .navbar-brand:focus,.navbar-brand:hover {
+                text-decoration: none
+            }
+
+            @media (min-width: 768px) {
+                .navbar>.container-fluid .navbar-brand {
+                    margin-left:-15px
+                }
+            }
+
+            .navbar-inverse {
+                background-color: #222;
+                border-color: #090909
+            }
+
+            .navbar-inverse .navbar-brand {
+                color: #e8e8e8
+            }
+
+            .navbar-inverse .navbar-brand:focus,.navbar-inverse .navbar-brand:hover {
+                color: #fff;
+                background-color: transparent
+            }
+
+            .badge,.close {
+                font-weight: 700;
+                line-height: 1
+            }
+
+            .badge {
+                display: inline-block;
+                min-width: 10px;
+                padding: 3px 7px;
+                white-space: nowrap;
+                text-align: center;
+                background-color: rgba(204,204,204,.3);
+                border-radius: 10px;
+                font-size: 12px;
+                color: #fff
+            }
+
+            .close {
+                float: right;
+                font-size: 21px;
+                color: #000;
+                text-shadow: 0 1px 0 #fff;
+                opacity: .2
+            }
+
+            .close:focus,.close:hover {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+                opacity: .5
+            }
+
+            button.close {
+                padding: 0;
+                cursor: pointer;
+                background: 0 0;
+                border: 0;
+                -webkit-appearance: none
+            }
+
+            .pull-left {
+                float: left!important
+            }
+
+            .mini span.verified-image:hover span {
+                visibility: hidden
+            }
+
+            @-ms-viewport {
+                width: device-width
+            }
+
+            .visible-xs-inline {
+                display: none!important
+            }
+
+            @media (max-width: 767px) {
+                .visible-xs-inline {
+                    display:inline!important
+                }
+
+                .hidden-xs {
+                    display: none!important
+                }
+            }
+
+            @media (min-width: 768px) and (max-width:991px) {
+                .hidden-sm {
+                    display:none!important
+                }
+            }
+
+            .fa {
+                display: inline-block;
+                font-family: 'FontAwesome'!important;
+                speak: none;
+                font-style: normal;
+                font-weight: 400;
+                font-variant: normal;
+                text-transform: none;
+                line-height: 1;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale
+            }
+
+            .fa-fw {
+                width: 1.28571429em;
+                text-align: center
+            }
+
+            .dropdown-menu {
+                z-index: 1002
+            }
+
+            .img-wrapper {
+                max-width: 100%
+            }
+
+            .img-wrapper.mini {
+                min-height: 59px
+            }
+
+            .listing-li .img-wrapper.premium img {
+                width: 200px;
+                height: 208px
+            }
+
+            .listing-li .img-wrapper.featured img {
+                width: 115px;
+                height: 135px
+            }
+
+            .listing-li .img-wrapper.basic img {
+                width: 89px;
+                height: 95px
+            }
+
+            .listing-li .img-wrapper.mini img {
+                width: 50px;
+                height: 53px
+            }
+
+            .listing-li .img-wrapper.free img {
+                width: 89px;
+                height: 95px
+            }
+
+            span.verified-image {
+                display: inline-block;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                z-index: 1;
+                background: #f4b827;
+                background: -webkit-gradient(linear,left bottom,right top,color-stop(1%,#f4b827),color-stop(50%,#c3931f),color-stop(51%,transparent));
+                background: linear-gradient(to top right,#f4b827 1%,#c3931f 50%,transparent 51%);
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                overflow: hidden;
+                text-transform: uppercase;
+                color: #333;
+                font-weight: 700;
+                -webkit-transition: all .25s ease-in-out;
+                transition: all .25s ease-in-out
+            }
+
+            span.verified-image i {
+                line-height: 30px;
+                font-size: 2.5em;
+                float: left;
+                margin: 0 2px;
+                color: #333;
+                text-shadow: 0 0 2px #f4b827
+            }
+
+            span.verified-image:hover {
+                width: 140px;
+                background: -webkit-gradient(linear,left bottom,right top,from(#f4b827),to(#c3931f));
+                background: linear-gradient(to top right,#f4b827,#c3931f);
+                padding-right: 2px
+            }
+
+            span.verified-image span {
+                display: inline-block;
+                visibility: hidden
+            }
+
+            span.verified-image:hover span {
+                visibility: visible
+            }
+
+            .mini span.verified-image {
+                width: 20px;
+                height: 20px;
+                line-height: 20px
+            }
+
+            .mini span.verified-image i {
+                line-height: 20px;
+                font-size: 1.5em
+            }
+
+            .mini span.verified-image span {
+                font-size: .85em
+            }
+
+            .mini span.verified-image:hover {
+                width: 20px
+            }
+
+            @media (min-width: 568px) {
+                .visible-xxs {
+                    display:none
+                }
+            }
+
+            @media (max-width: 767px) {
+                .sr-only-xs {
+                    position:absolute;
+                    width: 1px;
+                    height: 1px;
+                    padding: 0;
+                    overflow: hidden;
+                    clip: rect(0,0,0,0);
+                    white-space: nowrap;
+                    -webkit-clip-path: inset(50%);
+                    clip-path: inset(50%);
+                    border: 0
+                }
+            }
+
+            a.page-title:hover {
+                color: #fff
+            }
+
+            .underline {
+                text-decoration: underline
+            }
+
+            .border-top {
+                border-top: 1px solid rgba(255,255,255,.1)
+            }
+
+            .padding-top {
+                padding-top: 20px
+            }
+
+            .padding-left {
+                padding-left: 20px
+            }
+
+            .margin-bottom {
+                margin-bottom: 20px
+            }
+
+            .no-margin {
+                margin: 0
+            }
+
+            .nostyle-link,.nostyle-link:hover {
+                color: #fff;
+                text-decoration: none
+            }
+
+            a.page-title {
+                color: #fff;
+                display: inline-block
+            }
+
+            @media (max-width: 767px) {
+                p.page-desc {
+                    font-size:12px;
+                    line-height: 17px
+                }
+
+                p.page-desc a {
+                    padding: 10px 0;
+                    margin: 0 10px
+                }
+
+                h1 {
+                    font-size: 21px;
+                    margin-bottom: 8px
+                }
+
+                h2 {
+                    font-size: 20px
+                }
+
+                .h3,h3 {
+                    font-size: 16px
+                }
+            }
+
+            .content-wrapper.no-sidebar #content {
+                position: relative;
+                float: left;
+                width: 100%;
+                min-height: 1px
+            }
+
+            #content {
+                padding-bottom: 10px
+            }
+
+            h1,h2,h3,h4 {
+                font-family: Helvetica,Arial,sans-serif
+            }
+
+            form input::-webkit-input-placeholder {
+                color: #a9a8a8
+            }
+
+            form input::-moz-placeholder {
+                color: #a9a8a8
+            }
+
+            form input:-ms-input-placeholder,form input::-ms-input-placeholder {
+                color: #a9a8a8
+            }
+
+            .dark-form .btn-dark,.dark-form .form-control,.dark-form .twitter-typeahead {
+                background-color: #333;
+                background: -webkit-gradient(linear,left top,left bottom,from(#222),to(#333));
+                background: linear-gradient(#222,#333);
+                text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+                color: #e6e6e6;
+                border: 1px solid #555
+            }
+
+            .dark-form .btn-dark::-webkit-input-placeholder,.dark-form .form-control::-webkit-input-placeholder,.dark-form .select2-container .select2-input::-webkit-input-placeholder {
+                color: #e6e6e6;
+                opacity: 1
+            }
+
+            .dark-form .btn-dark::-moz-placeholder,.dark-form .form-control::-moz-placeholder,.dark-form .select2-container .select2-input::-moz-placeholder {
+                color: #e6e6e6;
+                opacity: 1
+            }
+
+            .dark-form .btn-dark:-ms-input-placeholder,.dark-form .btn-dark::-ms-input-placeholder,.dark-form .form-control:-ms-input-placeholder,.dark-form .form-control::-ms-input-placeholder {
+                color: #e6e6e6;
+                opacity: 1
+            }
+
+            .dark-form .btn-dark:disabled,.dark-form .form-control:disabled {
+                background: #262626;
+                -webkit-transition: none;
+                transition: none;
+                opacity: .65
+            }
+
+            .dark-form .btn-dark:active,.dark-form .btn-dark:focus,.dark-form .btn-dark:hover,.dark-form .form-control:active,.dark-form .form-control:focus,.dark-form .form-control:hover {
+                background: #333;
+                -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+                box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
+            }
+
+            .dark-form .btn-dark:disabled,.dark-form .btn-dark:readonly,.dark-form .combobox-box input:readonly,.dark-form .dropdown-element:readonly,.dark-form .form-control:disabled,.dark-form .form-control:readonly,.dark-form .input-group-addon:readonly,.dark-form .my-listings-nav>.my-listing-nav-link-listing:readonly,.dark-form .select-box:readonly {
+                background: #262626;
+                -webkit-transition: none;
+                transition: none;
+                opacity: .65;
+                border: 1px solid #555
+            }
+
+            .dark-form .select2-container .select2-input {
+                border-color: rgba(255,255,255,.1);
+                background-color: #333;
+                background: -webkit-gradient(linear,left top,left bottom,from(#222),to(#333));
+                background: linear-gradient(#222,#333);
+                text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+                color: #e6e6e6
+            }
+
+            .dark-form .select2-container .select2-input:-ms-input-placeholder,.dark-form .select2-container .select2-input::-ms-input-placeholder {
+                color: #e6e6e6;
+                opacity: 1
+            }
+
+            .dark-form .select2-container .select2-input:disabled {
+                background: #262626;
+                -webkit-transition: none;
+                transition: none;
+                opacity: .65
+            }
+
+            .dark-form .select2-container .select2-input:active,.dark-form .select2-container .select2-input:focus,.dark-form .select2-container .select2-input:hover {
+                background: #333;
+                -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+                box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
+            }
+
+            .dark-form .select2-container .select2-choice,.dark-form .select2-container .select2-choices {
+                background-color: #333;
+                background: -webkit-gradient(linear,left top,left bottom,from(#222),to(#333));
+                background: linear-gradient(#222,#333);
+                text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+                color: #e6e6e6;
+                border: 1px solid #555
+            }
+
+            .dark-form .select2-container .select2-choice::-webkit-input-placeholder,.dark-form .select2-container .select2-choices::-webkit-input-placeholder,.dark-form .tt-input::-webkit-input-placeholder {
+                color: #e6e6e6;
+                opacity: 1
+            }
+
+            .dark-form .select2-container .select2-choices .select2-search-field>input::-webkit-input-placeholder {
+                opacity: 1
+            }
+
+            .dark-form .select2-container .select2-choice::-moz-placeholder,.dark-form .select2-container .select2-choices::-moz-placeholder,.dark-form .tt-input::-moz-placeholder {
+                color: #e6e6e6;
+                opacity: 1
+            }
+
+            .dark-form .select2-container .select2-choices .select2-search-field>input::-moz-placeholder {
+                opacity: 1
+            }
+
+            .dark-form .select2-container .select2-choice:-ms-input-placeholder,.dark-form .select2-container .select2-choice::-ms-input-placeholder,.dark-form .select2-container .select2-choices:-ms-input-placeholder,.dark-form .select2-container .select2-choices::-ms-input-placeholder,.dark-form .tt-input:-ms-input-placeholder,.dark-form .tt-input::-ms-input-placeholder {
+                color: #e6e6e6;
+                opacity: 1
+            }
+
+            .dark-form .select2-container .select2-choices .select2-search-field>input:-ms-input-placeholder,.dark-form .select2-container .select2-choices .select2-search-field>input::-ms-input-placeholder {
+                opacity: 1
+            }
+
+            .dark-form .select2-container .select2-choice:disabled,.dark-form .select2-container .select2-choices .select2-search-field>input:disabled,.dark-form .select2-container .select2-choices:disabled {
+                background: #262626;
+                -webkit-transition: none;
+                transition: none;
+                opacity: .65
+            }
+
+            .dark-form .tt-input:disabled {
+                background: #262626;
+                -webkit-transition: none;
+                transition: none
+            }
+
+            .dark-form .select2-container .select2-choice:active,.dark-form .select2-container .select2-choice:focus,.dark-form .select2-container .select2-choice:hover,.dark-form .select2-container .select2-choices .select2-search-field>input:active,.dark-form .select2-container .select2-choices .select2-search-field>input:focus,.dark-form .select2-container .select2-choices .select2-search-field>input:hover,.dark-form .select2-container .select2-choices:active,.dark-form .select2-container .select2-choices:focus,.dark-form .select2-container .select2-choices:hover,.dark-form .tt-input:active,.dark-form .tt-input:focus,.dark-form .tt-input:hover {
+                background: #333;
+                -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+                box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
+            }
+
+            .dark-form .select2-container .select2-choice .select2-arrow {
+                border: 0
+            }
+
+            .dark-form .select2-container .select2-choices .select2-search-field>input {
+                background-color: #333;
+                background: -webkit-gradient(linear,left top,left bottom,from(#222),to(#333));
+                background: linear-gradient(#222,#333);
+                text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+                color: #e6e6e6!important
+            }
+
+            .dark-form .select2-container .select2-choices .select2-search-field>input::-webkit-input-placeholder {
+                color: #e6e6e6!important
+            }
+
+            .dark-form .select2-container .select2-choices .select2-search-field>input::-moz-placeholder {
+                color: #e6e6e6!important
+            }
+
+            .dark-form .select2-container .select2-choices .select2-search-field>input:-ms-input-placeholder,.dark-form .select2-container .select2-choices .select2-search-field>input::-ms-input-placeholder {
+                color: #e6e6e6!important
+            }
+
+            .dark-form .tt-input {
+                background-color: #333;
+                background: -webkit-gradient(linear,left top,left bottom,from(#222),to(#333));
+                background: linear-gradient(#222,#333);
+                text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+                color: #e6e6e6
+            }
+
+            .dark-form .tt-input:active,.dark-form .tt-input:hover {
+                background-color: #333!important
+            }
+
+            .dark-form .tt-input:disabled {
+                background-color: #262626!important;
+                opacity: .65!important
+            }
+
+            .btn.btn-dark {
+                font-family: "Helvetica Neue",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
+            }
+
+            #header .nav-bar {
+                margin-bottom: 0
+            }
+
+            .header-nav-buttons--separated {
+                right: 15px
+            }
+
+            .header-nav-buttons--separated .btn-navbar-header {
+                color: #fff;
+                width: initial
+            }
+
+            #main-nav a:hover,.header-nav-buttons--separated .btn-navbar-header:hover {
+                color: #fff
+            }
+
+            .btn-navbar-header {
+                margin-right: 0;
+                padding: 9px 14px;
+                margin-top: 8px;
+                margin-bottom: 8px;
+                background-color: transparent;
+                background-image: none;
+                border: 1px solid transparent;
+                border-radius: 4px;
+                border-color: #333;
+                font-size: 15px;
+                line-height: 23px
+            }
+
+            .btn-navbar-header:focus {
+                outline: 0;
+                background-color: #333
+            }
+
+            .btn-navbar-header:hover {
+                background-color: #333
+            }
+
+            .btn-navbar-header .fa {
+                font-size: 18px;
+                padding-top: 2px;
+                width: 20px;
+                line-height: 25px
+            }
+
+            @media (max-width: 767px) {
+                .btn-navbar-header {
+                    width:46px
+                }
+            }
+
+            #header {
+                background: rgba(0,0,0,.3);
+                margin-bottom: 20px
+            }
+
+            @media (max-width: 767px) {
+                #header {
+                    margin-bottom:10px
+                }
+            }
+
+            .logo {
+                margin: 5px 0;
+                text-indent: -9999px;
+                display: block;
+                width: 165px;
+                height: 55px;
+                background: url(https://d257pz9kz95xf4.cloudfront.net/assets/layout/logo-3e48185d81fa7334b0e86ee0587c02b6d7d9be1dcc424971186b2e828fbcd85c.png) 0 0 no-repeat
+            }
+
+            @media (max-width: 767px) {
+                .logo {
+                    margin-left:-10px
+                }
+            }
+
+            #main-nav {
+                display: inline-block;
+                margin: 10px 0 0 20px
+            }
+
+            @media (max-width: 767px) {
+                #main-nav {
+                    margin:0
+                }
+            }
+
+            #main-nav a {
+                text-transform: uppercase;
+                margin-bottom: 0;
+                -webkit-box-shadow: none!important;
+                box-shadow: none!important
+            }
+
+            #main-nav a.selected,#main-nav a.selected:active,#main-nav a.selected:focus,#main-nav a.selected:hover {
+                position: relative;
+                background: #525252
+            }
+
+            #main-nav a.selected:active:before,#main-nav a.selected:before,#main-nav a.selected:focus:before,#main-nav a.selected:hover:before {
+                content: " ";
+                height: 0;
+                position: absolute;
+                width: 0;
+                top: 100%;
+                left: 50%;
+                margin-left: -10px;
+                border: 10px solid transparent;
+                border-top-color: #525252
+            }
+
+            .navbar-inverse {
+                background: #000;
+                margin: 0
+            }
+
+            .nav-bar {
+                z-index: 2;
+                padding: 10px 0;
+                position: relative
+            }
+
+            @media (max-width: 767px) {
+                .logo {
+                    margin-left:-10px
+                }
+
+                .container-fluid>.navbar-header {
+                    margin-left: 0;
+                    margin-right: 0
+                }
+
+                #main-nav,#main-nav a {
+                    display: block
+                }
+
+                #main-nav a {
+                    width: 50%
+                }
+            }
+
+            .stream-sidebar {
+                border-left: 1px solid rgba(255,255,255,.1)
+            }
+
+            .stream-sidebar h3 {
+                padding-left: 10px
+            }
+
+            @media (max-width: 1199px) {
+                .stream-sidebar h3 {
+                    font-size:18px
+                }
+            }
+
+            .subscribe-btn-wrapper--small-right {
+                float: right;
+                margin-left: .6em
+            }
+
+            .subscribe-btn-wrapper--small-right .btn {
+                padding: 3px 10px;
+                font-size: 14px;
+                line-height: 1.45;
+                border-radius: 3px
+            }
+
+            @media (max-width: 767px) {
+                .subscribe-btn-wrapper--small-right .btn {
+                    padding:1px 5px;
+                    font-size: 12px;
+                    line-height: 1.5;
+                    border-radius: 3px
+                }
+            }
+
+            .subscribe-btn-wrapper--small-right .btn>.fa {
+                width: 14px
+            }
+
+            .activity-records-mini {
+                padding-left: 0;
+                list-style: none;
+                border-bottom: 1px solid rgba(255,255,255,.1)
+            }
+
+            .activity-records-mini li {
+                border-top: 1px solid rgba(255,255,255,.1);
+                padding: 10px 0 10px 10px;
+                margin: 0
+            }
+
+            .activity-records-mini li .headline i {
+                float: right;
+                margin-left: 5px;
+                color: #646464;
+                width: 14px
+            }
+
+            .activity-records-mini .webcam-ad {
+                padding-right: 6px;
+                background: #ecb1210d
+            }
+
+            .activity-records-mini .non-escort {
+                color: #faebd7;
+                font-size: 70%;
+                text-align: right;
+                margin-bottom: -7px
+            }
+
+            .activity-records-mini .activity-row,.activity-records-mini p {
+                margin: 0
+            }
+
+            .activity-records-mini .headline {
+                font-size: 14px;
+                margin-top: 0;
+                margin-bottom: 5px
+            }
+
+            .activity-records-mini .photo {
+                float: left;
+                margin: 0 10px 5px 0
+            }
+
+            .activity-records-mini .activity-content {
+                font-size: 85%;
+                line-height: 1.5em;
+                padding-left: 65px;
+                word-break: break-word
+            }
+
+            .activity-records-mini .question {
+                color: #c2c2c2;
+                display: inline;
+                font-style: italic
+            }
+
+            .activity-records-mini .flicker {
+                color: #61be61!important
+            }
+
+            @media (min-width: 768px) {
+                .listing-li .img-wrapper.premium img {
+                    width:200px;
+                    height: 208px
+                }
+
+                .listing-li .img-wrapper.featured img {
+                    width: 115px;
+                    height: 135px
+                }
+
+                .listing-li .img-wrapper.basic img {
+                    width: 89px;
+                    height: 95px
+                }
+
+                .activity-record.mini .img-wrapper.mini img,.listing-li .img-wrapper.mini img {
+                    width: 50px;
+                    height: 53px
+                }
+
+                .listing-li .img-wrapper.free img {
+                    width: 89px;
+                    height: 95px
+                }
+            }
+
+            .img-wrapper {
+                display: inline-block;
+                position: relative;
+                padding: 3px;
+                text-align: center;
+                color: #c2c2c2;
+                font-size: 85%
+            }
+
+            .img-wrapper img {
+                display: inline-block;
+                border: 1px solid #fff;
+                line-height: 1;
+                min-height: 1px
+            }
+
+            .listing-li {
+                border-bottom: 1px solid rgba(255,255,255,.1);
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+                overflow: hidden
+            }
+
+            .listing-li h2 .badge {
+                font-weight: 400;
+                margin-left: 10px;
+                background: #3d3d3d;
+                vertical-align: middle
+            }
+
+            .listing-li h2 .badge i {
+                font-size: .9375rem
+            }
+
+            .listing-li h2 .badge i:last-child {
+                margin-right: 0
+            }
+
+            .listing-li h2 .badge span {
+                margin-left: 5px
+            }
+
+            .listing-li>.thumbs,.listing-li>.thumbs>.main-thumbs {
+                float: left
+            }
+
+            .listing-li>.thumbs>.other-thumbs {
+                margin-left: 10px
+            }
+
+            .listing-li>.thumbs>.other-thumbs>.thumb {
+                clear: left
+            }
+
+            .listing-li.featured>.thumbs>.other-thumbs>.thumb,.listing-li.premium>.thumbs>.other-thumbs>.thumb {
+                margin-bottom: 15px
+            }
+
+            .listing-li.featured>.thumbs>.other-thumbs>.thumb:last-child,.listing-li.premium>.thumbs>.other-thumbs>.thumb:last-child {
+                margin-bottom: 0
+            }
+
+            .listing-li .see-more>a {
+                font-family: Helvetica,Arial,sans-serif;
+                font-weight: 700
+            }
+
+            @media (min-width: 568px) {
+                .listing-li .listing-info {
+                    margin-left:20px;
+                    padding-left: 20px;
+                    border-left: 1px solid rgba(255,255,255,.1)
+                }
+
+                .listing-li.premium>.listing-info-wrapper {
+                    padding-left: 270px
+                }
+
+                .listing-li.featured>.listing-info-wrapper {
+                    padding-left: 185px
+                }
+
+                .listing-li.basic .listing-info-wrapper,.listing-li.free .listing-info-wrapper {
+                    padding-left: 94px
+                }
+            }
+
+            .page-desc .services a {
+                font-weight: 700
+            }
+
+            @media (max-width: 567px) {
+                .listing-li {
+                    padding-bottom:12px;
+                    margin-bottom: 12px;
+                    text-align: center
+                }
+
+                .listing-li>.thumbs {
+                    float: none;
+                    border-right: none;
+                    padding-right: 0;
+                    margin: 0 auto;
+                    display: inline-block
+                }
+
+                .listing-li>.listing-info-wrapper>.listing-info {
+                    display: none
+                }
+            }
+
+            .listings-spots .spot {
+                background-color: rgba(0,0,0,.2);
+                position: relative;
+                border-radius: 15px
+            }
+
+            .listings-spots {
+                --placeholder-color: #8e8e8e;
+                --skeleton-height: 20px
+            }
+
+            .listings-spots.listing-spots--minimal .spot {
+                border-radius: 0
+            }
+
+            .listings-spots.listing-spots--minimal .spot .listing-li--spot {
+                background: #daa52029;
+                border-radius: 0
+            }
+
+            .listings-spots.listing-spots--minimal .spot .listing-li--spot .img-wrapper img {
+                border: 2px solid #daa520
+            }
+
+            .review-description p {
+                display: inline
+            }
+
+            .answer,.question {
+                word-break: break-word
+            }
+
+            @media (max-width: 767px) {
+                #user-reviews .answer-block:has(.payment-options),.activity-stream-full .answer-block:has(.payment-options),.block:has(.payment-options),.listing-question .answer-block:has(.payment-options),.my-listings-questions .answer-block:has(.payment-options),.my-listings-reviews .answer-block:has(.payment-options),.payment-options-box:has(.payment-options),.styled-questions .answer-block:has(.payment-options),.title-block:has(.payment-options) {
+                    margin:0 -.5rem;
+                    border-radius: .375rem
+                }
+            }
+
+            img.gemoji {
+                width: 1.429em;
+                height: 1.429em;
+                margin-left: 2px;
+                -webkit-user-drag: none
+            }
+
+            .select2-container {
+                margin: 0;
+                position: relative;
+                display: inline-block;
+                vertical-align: middle
+            }
+
+            .select2-container,.select2-search,.select2-search input {
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box
+            }
+
+            .select2-container .select2-choice {
+                display: block;
+                overflow: hidden;
+                position: relative;
+                border: 1px solid #aaa;
+                white-space: nowrap;
+                text-decoration: none;
+                background-clip: padding-box;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                background: #fff -webkit-gradient(linear,left bottom,left top,from(#eee),color-stop(50%,#fff));
+                background: #fff linear-gradient(to top,#eee 0%,#fff 50%)
+            }
+
+            .select2-container .select2-choice>.select2-chosen {
+                margin-right: 26px;
+                display: block;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                float: none;
+                width: auto
+            }
+
+            .select2-container .select2-choice abbr {
+                display: none;
+                width: 12px;
+                height: 12px;
+                position: absolute;
+                right: 24px;
+                font-size: 1px;
+                text-decoration: none;
+                border: 0;
+                background: url(https://d257pz9kz95xf4.cloudfront.net/assets/select2/select2-8dbd849db3252358fd08db3cc9251185373125f6a045d6a33293c24b8de57dee.png) top right no-repeat;
+                cursor: pointer;
+                outline: 0
+            }
+
+            .select2-container .select2-choice abbr:hover {
+                background-position: right -11px;
+                cursor: pointer
+            }
+
+            .select2-container .select2-choice .select2-arrow {
+                display: inline-block;
+                width: 18px;
+                height: 100%;
+                position: absolute;
+                right: 0;
+                top: 0;
+                border-radius: 0 4px 4px 0;
+                background-clip: padding-box;
+                background: #ccc -webkit-gradient(linear,left bottom,left top,from(#ccc),color-stop(60%,#eee));
+                background: #ccc linear-gradient(to top,#ccc 0%,#eee 60%)
+            }
+
+            .select2-container .select2-choice .select2-arrow b {
+                display: block;
+                width: 100%;
+                height: 100%;
+                background: url(https://d257pz9kz95xf4.cloudfront.net/assets/select2/select2-8dbd849db3252358fd08db3cc9251185373125f6a045d6a33293c24b8de57dee.png) no-repeat 0 1px
+            }
+
+            .select2-search {
+                display: inline-block;
+                width: 100%;
+                min-height: 26px;
+                margin: 0;
+                padding-left: 4px;
+                padding-right: 4px;
+                position: relative;
+                z-index: 10000;
+                white-space: nowrap
+            }
+
+            .select2-container-multi .select2-choices,.select2-search input {
+                height: auto!important;
+                margin: 0;
+                border: 1px solid #aaa;
+                min-height: 26px
+            }
+
+            .select2-search input {
+                width: 100%;
+                outline: 0;
+                font-size: 1em;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                background: url(https://d257pz9kz95xf4.cloudfront.net/assets/select2/select2-8dbd849db3252358fd08db3cc9251185373125f6a045d6a33293c24b8de57dee.png) no-repeat 100% -22px,-webkit-gradient(linear,left top,left bottom,color-stop(85%,#fff),color-stop(99%,#eee)) 0 0;
+                background: url(https://d257pz9kz95xf4.cloudfront.net/assets/select2/select2-8dbd849db3252358fd08db3cc9251185373125f6a045d6a33293c24b8de57dee.png) no-repeat 100% -22px,linear-gradient(to bottom,#fff 85%,#eee 99%) 0 0;
+                padding: 4px 20px 4px 5px
+            }
+
+            .select2-hidden-accessible {
+                border: 0;
+                clip: rect(0 0 0 0);
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px
+            }
+
+            .select2-container-multi .select2-choices {
+                padding: 0 5px 0 0;
+                position: relative;
+                cursor: text;
+                overflow: hidden;
+                background: #fff -webkit-gradient(linear,left top,left bottom,color-stop(1%,#eee),color-stop(15%,#fff));
+                background: #fff linear-gradient(to bottom,#eee 1%,#fff 15%)
+            }
+
+            .select2-container-multi .select2-choices li {
+                float: left;
+                list-style: none
+            }
+
+            .select2-container-multi .select2-choices .select2-search-field {
+                margin: 0;
+                padding: 0;
+                white-space: nowrap
+            }
+
+            .select2-container-multi .select2-choices .select2-search-field input {
+                padding: 5px;
+                font-family: sans-serif;
+                font-size: 100%;
+                color: #666;
+                outline: 0;
+                border: 0;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                background: 0 0!important
+            }
+
+            .select2-default {
+                color: #999!important
+            }
+
+            .select2-search-choice-close {
+                display: block;
+                width: 12px;
+                height: 13px;
+                position: absolute;
+                right: 3px;
+                font-size: 1px;
+                outline: 0;
+                background: url(https://d257pz9kz95xf4.cloudfront.net/assets/select2/select2-8dbd849db3252358fd08db3cc9251185373125f6a045d6a33293c24b8de57dee.png) right top no-repeat
+            }
+
+            .select2-offscreen,.select2-offscreen:focus {
+                clip: rect(0 0 0 0)!important;
+                border: 0!important;
+                margin: 0!important;
+                padding: 0!important;
+                overflow: hidden!important;
+                outline: 0!important;
+                left: 0!important;
+                top: 0!important
+            }
+
+            .select2-display-none {
+                display: none
+            }
+
+            @media only screen and (-webkit-min-device-pixel-ratio: 2),only screen and (min-resolution:2dppx) {
+                .select2-container .select2-choice .select2-arrow b,.select2-container .select2-choice abbr,.select2-search input,.select2-search-choice-close {
+                    background-image:url(https://d257pz9kz95xf4.cloudfront.net/assets/select2/select2x2-c0fb39605605e0646ac56e13cf7f6feb1f0eb50c19812ba720e0361bd7940ce7.png)!important;
+                    background-size: 60px 40px!important
+                }
+
+                .select2-search input {
+                    background-position: 100% -21px!important
+                }
+            }
+
+            .select2-container.form-control {
+                background: 0 0;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                border: 0;
+                display: block;
+                margin: 0;
+                padding: 0
+            }
+
+            .select2-container .select2-choice,.select2-container .select2-choices,.select2-container .select2-choices .select2-search-field input {
+                background: 0 0;
+                padding: 0
+            }
+
+            .select2-container .select2-choice,.select2-container .select2-choices,.select2-container .select2-choices .select2-search-field input,.select2-search input {
+                border-color: #ccc;
+                border-radius: 4px;
+                color: #3d3d3d;
+                font-family: "Helvetica Neue",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+                background-color: #fff;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                box-shadow: inset 0 1px 1px rgba(0,0,0,.075)
+            }
+
+            .select2-container .select2-choices .select2-search-field input {
+                -webkit-box-shadow: none;
+                box-shadow: none
+            }
+
+            .select2-container .select2-choice {
+                height: 34px;
+                line-height: 1.42857143
+            }
+
+            .select2-container.select2-container-multi.form-control {
+                height: auto
+            }
+
+            .select2-container-multi .select2-choices .select2-search-field input {
+                height: 32px;
+                margin: 0
+            }
+
+            .select2-choice>span:first-child,.select2-chosen,.select2-container .select2-choices .select2-search-field input {
+                padding: 6px 12px
+            }
+
+            .select2-container .select2-choice .select2-arrow {
+                border-left: none;
+                background: 0 0
+            }
+
+            .select2-container .select2-choice .select2-arrow b {
+                background-position: 0 3px
+            }
+
+            .select2-search-choice-close {
+                margin-top: -7px;
+                top: 50%
+            }
+
+            .select2-container .select2-choice abbr {
+                top: 50%
+            }
+
+            .select2-offscreen,.select2-offscreen:focus {
+                width: 1px!important;
+                height: 1px!important;
+                position: absolute!important
+            }
+
+            .select2-input::-webkit-input-placeholder {
+                color: #777;
+                opacity: 1
+            }
+
+            .select2-input::-moz-placeholder {
+                color: #777;
+                opacity: 1
+            }
+
+            .select2-input:-ms-input-placeholder,.select2-input::-ms-input-placeholder {
+                color: #777;
+                opacity: 1
+            }
+
+            .select2-search-field>input.select2-input::-webkit-input-placeholder {
+                color: #777!important;
+                opacity: 1
+            }
+
+            .select2-search-field>input.select2-input::-moz-placeholder {
+                color: #777!important;
+                opacity: 1
+            }
+
+            .select2-search-field>input.select2-input:-ms-input-placeholder,.select2-search-field>input.select2-input::-ms-input-placeholder {
+                color: #777!important;
+                opacity: 1
+            }
+
+            .select2-no-results {
+                padding: 4px 12px
+            }
+
+            .select2-hidden-accessible {
+                visibility: hidden
+            }
+
+            a.btn-dark {
+                color: #f4b827
+            }
+
+            .dropdown--lang .btn {
+                -webkit-box-shadow: none;
+                box-shadow: none;
+                border-color: transparent
+            }
+
+            .dropdown--lang .dropdown-menu.nav {
+                min-width: initial;
+                border-color: #494949
+            }
+
+            .select2-choices>.select2-search-field {
+                min-width: 148px
+            }
+
+            .dropdown-gender-menu {
+                min-width: 168px
+            }
+
+            @media (max-width: 767px) {
+                .dropdown-gender-menu,.primary-search-gender>.btn,.select2-choices>.select2-search-field {
+                    min-width:100%
+                }
+
+                .primary-search-gender>.btn {
+                    position: relative;
+                    text-align: left
+                }
+
+                .primary-search-gender>.btn .fa {
+                    position: absolute;
+                    right: 5px;
+                    top: 8px
+                }
+            }
+
+            .num-range {
+                display: block
+            }
+
+            .num-range-from,.num-range-to {
+                display: inline-block;
+                width: 50%;
+                vertical-align: top
+            }
+
+            @media (min-width: 768px) and (max-width:991px) {
+                .num-range-from {
+                    width:55%
+                }
+            }
+
+            .num-range-to {
+                padding-left: 1px
+            }
+
+            @media (min-width: 768px) and (max-width:991px) {
+                .num-range-to {
+                    width:45%
+                }
+            }
+
+            .search-bar--gender {
+                min-height: 34px;
+                vertical-align: middle
+            }
+
+            .listings-primary-search .form-control[multiple],.listings-search-advanced-fields .form-control[multiple] {
+                background-color: #333;
+                background: -webkit-gradient(linear,left top,left bottom,from(#222),to(#333));
+                background: linear-gradient(#222,#333);
+                text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+                color: #e6e6e6;
+                border: 1px solid #555;
+                max-height: 34px;
+                vertical-align: middle;
+                width: 100%
+            }
+
+            .listings-primary-search .form-control[multiple]::-webkit-input-placeholder,.listings-search-advanced-fields .form-control[multiple]::-webkit-input-placeholder {
+                color: #e6e6e6;
+                opacity: 1
+            }
+
+            .listings-primary-search .form-control[multiple]::-moz-placeholder,.listings-search-advanced-fields .form-control[multiple]::-moz-placeholder {
+                color: #e6e6e6;
+                opacity: 1
+            }
+
+            .listings-primary-search .form-control[multiple]:-ms-input-placeholder,.listings-primary-search .form-control[multiple]::-ms-input-placeholder,.listings-search-advanced-fields .form-control[multiple]:-ms-input-placeholder,.listings-search-advanced-fields .form-control[multiple]::-ms-input-placeholder {
+                color: #e6e6e6;
+                opacity: 1
+            }
+
+            .listings-primary-search .form-control[multiple]:disabled,.listings-search-advanced-fields .form-control[multiple]:disabled {
+                background: #262626;
+                -webkit-transition: none;
+                transition: none;
+                opacity: .65
+            }
+
+            .listings-primary-search .form-control[multiple]:active,.listings-primary-search .form-control[multiple]:focus,.listings-primary-search .form-control[multiple]:hover,.listings-search-advanced-fields .form-control[multiple]:active,.listings-search-advanced-fields .form-control[multiple]:focus,.listings-search-advanced-fields .form-control[multiple]:hover {
+                background: #333;
+                -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+                box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
+            }
+
+            .listings-primary-search {
+                min-height: 34px
+            }
+
+            .listings-primary-search .q_services_include_all>select {
+                width: 196px
+            }
+
+            .listings-primary-search .price-control>select {
+                margin-right: -1px;
+                width: 81px
+            }
+
+            .listings-primary-search .action-group {
+                display: inline;
+                vertical-align: top
+            }
+
+            .listings-primary-search .action-group .btn:last-child {
+                margin-right: 0;
+                height: 34px;
+                min-width: 102px
+            }
+
+            .listings-primary-search .action-group>.btn,.listings-primary-search .form-group {
+                margin-right: 15px
+            }
+
+            @media (max-width: 767px) {
+                .listings-primary-search .action-group>.btn,.listings-primary-search .form-group {
+                    margin-right:0
+                }
+
+                .listings-primary-search .typeahead-city-wrapper {
+                    display: block
+                }
+            }
+
+            @media (min-width: 768px) and (max-width:1199px) {
+                .listings-primary-search .typeahead-city-wrapper {
+                    max-width:160px
+                }
+            }
+
+            .listings-search-main-fields-secondary {
+                display: inline
+            }
+
+            @media (max-width: 767px) {
+                .listings-search-main-fields-secondary {
+                    display:none
+                }
+            }
+
+            .typeahead-city-wrapper {
+                vertical-align: top
+            }
+
+            .typeahead-city-wrapper .twitter-typeahead {
+                padding: 0;
+                z-index: 3
+            }
+
+            .typeahead-city-wrapper .tt-hint,.typeahead-city-wrapper .tt-input,.typeahead-city-wrapper .typeahead-city {
+                display: block;
+                width: 100%!important;
+                height: 100%;
+                background-color: transparent!important;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                padding-left: 29px;
+                padding-right: 6px;
+                font-size: 14px;
+                line-height: 1.42857143;
+                border: 1px solid transparent;
+                border-radius: 4px
+            }
+
+            .tt-dropdown-menu {
+                min-width: 300px;
+                background: #333;
+                border: 1px solid #555;
+                z-index: 1002;
+                opacity: 0;
+                text-align: left
+            }
+
+            .tt-dropdown-menu .tt-dataset-location {
+                color: #fff
+            }
+
+            .search-form .tt-dropdown-menu {
+                min-width: 200px
+            }
+
+            @media (max-width: 767px) {
+                .search-form .tt-dropdown-menu {
+                    min-width:100%
+                }
+            }
+
+            .advanced-search-checkboxes {
+                padding-top: 20px
+            }
+
+            .advanced-search-checkboxes>.form-group {
+                float: left;
+                margin-right: 20px
+            }
+
+            .advanced-search-checkboxes>.form-group:last-child {
+                margin-right: 0
+            }
+
+            .price-control:after {
+                content: " ";
+                display: block;
+                clear: left
+            }
+
+            .price-control>.currency-select-container {
+                display: inline-block;
+                max-width: 86px;
+                margin-right: -1px
+            }
+
+            .price-control>.price-currency {
+                display: inline-block;
+                width: auto
+            }
+
+            .price-control>.price-amount {
+                display: inline-block;
+                max-width: 83px;
+                margin-left: 0;
+                vertical-align: top
+            }
+
+            .price-control>.price-amount:focus {
+                z-index: 1000
+            }
+
+            .price-control .price-currency+.price-amount {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+                margin-left: -1px
+            }
+
+            .price-control .currency-select-container:first-child a,.price-control .price-currency:first-child {
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0
+            }
+
+            .currency-select-dropdown {
+                min-width: 120px
+            }
+
+            .btn-dark {
+                background: #3d3d3d;
+                border-color: rgba(255,255,255,.1);
+                color: #fff
+            }
+
+            .btn-dark:active,.btn-dark:focus,.btn-dark:hover {
+                background: #474747;
+                border-color: rgba(255,255,255,.1);
+                color: #fff
+            }
+
+            .btn {
+                text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+                -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.15),0 1px 1px rgba(0,0,0,.075);
+                box-shadow: inset 0 1px 0 rgba(255,255,255,.15),0 1px 1px rgba(0,0,0,.075)
+            }
+
+            .btn:active {
+                background-image: none;
+                -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+                box-shadow: inset 0 3px 5px rgba(0,0,0,.125)
+            }
+
+            .btn-primary {
+                background: #f4b827 -webkit-gradient(linear,left top,left bottom,from(#f4b827),to(#d3980b)) repeat-x;
+                background: #f4b827 linear-gradient(#f4b827,#d3980b) repeat-x;
+                border-color: #c9910a
+            }
+
+            .btn-primary:focus,.btn-primary:hover {
+                background-color: #d3980b;
+                background-position: 0 -15px
+            }
+
+            .btn-primary:active {
+                background-color: #d3980b;
+                border-color: #c9910a
+            }
+
+            form .btn-primary[data-btn-submit]:after {
+                font-family: FontAwesome!important;
+                content: " \e94c";
+                opacity: .8;
+                display: inline-block;
+                margin-left: 10px;
+                height: 18px;
+                width: 5px
+            }
+
+            form .btn-lg.btn-primary[data-btn-submit]::after {
+                height: 22px
+            }
+
+            .badge {
+                border-radius: 50rem;
+                vertical-align: baseline
+            }
+
+            #age-check .logo {
+                margin: 0 auto 12px
+            }
+
+            #age-check .age-check-warning {
+                font-weight: 700
+            }
+
+            .nav.nav-dark {
+                background-color: #333;
+                border: 1px solid rgba(255,255,255,.1);
+                border-radius: 2px
+            }
+
+            .nav.nav-dark>li>a {
+                border-radius: 0;
+                color: #fff;
+                background-color: #333
+            }
+
+            .nav.nav-dark>li:hover>a {
+                background-color: rgba(166,166,166,.1)
+            }
+
+            .nav.nav-dark>li.active>a {
+                background-color: rgba(255,255,255,.1)
+            }
+
+            .form-group {
+                margin-bottom: 1.5rem
+            }
+
+            .block__coinvert li:has(.selected) {
+                background-color: rgba(0,0,0,.25)
+            }
+
+            .d-none {
+                display: none!important
+            }
+
+            .d-flex {
+                display: -webkit-box!important;
+                display: -ms-flexbox!important;
+                display: flex!important
+            }
+
+            .d-inline-flex {
+                display: -webkit-inline-box!important;
+                display: -ms-inline-flexbox!important;
+                display: inline-flex!important
+            }
+
+            @media (min-width: 768px) {
+                .d-md-block {
+                    display:block!important
+                }
+            }
+
+            .mb-0 {
+                margin-bottom: 0!important
+            }
+
+            .mr-1 {
+                margin-right: .25rem!important
+            }
+
+            .ml-2 {
+                margin-left: .5rem!important
+            }
+
+            .mb-3 {
+                margin-bottom: 1rem!important
+            }
+
+            .p-0 {
+                padding: 0!important
+            }
+
+            .py-0 {
+                padding-top: 0!important;
+                padding-bottom: 0!important
+            }
+
+            .px-2 {
+                padding-right: .5rem!important;
+                padding-left: .5rem!important
+            }
+
+            .p-3 {
+                padding: 1rem!important
+            }
+
+            .pt-3,.py-3 {
+                padding-top: 1rem!important
+            }
+
+            .py-3 {
+                padding-bottom: 1rem!important
+            }
+
+            .px-4 {
+                padding-right: 1.5rem!important;
+                padding-left: 1.5rem!important
+            }
+
+            .mx-n2 {
+                margin-right: -.5rem!important;
+                margin-left: -.5rem!important
+            }
+
+            @media (min-width: 576px) {
+                .mx-sm-0 {
+                    margin-right:0!important;
+                    margin-left: 0!important
+                }
+
+                .px-sm-3 {
+                    padding-right: 1rem!important;
+                    padding-left: 1rem!important
+                }
+            }
+
+            .flex-wrap {
+                -ms-flex-wrap: wrap!important;
+                flex-wrap: wrap!important
+            }
+
+            .justify-content-center {
+                -webkit-box-pack: center!important;
+                -ms-flex-pack: center!important;
+                justify-content: center!important
+            }
+
+            .align-items-start {
+                -webkit-box-align: start!important;
+                -ms-flex-align: start!important;
+                align-items: flex-start!important
+            }
+
+            .align-items-center {
+                -webkit-box-align: center!important;
+                -ms-flex-align: center!important;
+                align-items: center!important
+            }
+
+            .w-100 {
+                width: 100%!important
+            }
+
+            .position-absolute {
+                position: absolute
+            }
+
+            .fw-bold {
+                font-weight: 700!important
+            }
+
+            .gap-2 {
+                gap: .5rem!important
+            }
+
+            @media (min-width: 567px) {
+                .gap-sm-3 {
+                    gap:1rem!important
+                }
+            }
+
+            .gap-4 {
+                gap: 1.5rem!important
+            }
+
+            .content-wrapper.no-sidebar #content {
+                padding: 0
+            }
+
+            .container-fluid {
+                max-width: 1340px
+            }
+
+            [role=button],a,button,input,label,select {
+                -ms-touch-action: manipulation;
+                touch-action: manipulation
+            }
+
+            .modal {
+                display: none
+            }
+
+            .fs {
+                visibility: hidden
+            }
+
+            .tooltip {
+                position: absolute
+            }
+        </style>  
+<body data-action="index" data-turbolinks="false">
     
     
    
@@ -192,1470 +2630,8 @@
 </div>
 
 
-              <!-- <div class="listings border-top padding-top">
-              
-                <div class="listing-li premium thumbs-3 thumbs-mini">
-                  <h2 class="visible-xxs">
-                    <a
-                      class="nostyle-link"
-                      href="/female-escorts-in-dubai/nicole-550120"
-                      title="Nicole, Russian escort in Dubai (8)"
-                      >Nicole</a
-                    >
-                  </h2>
-                  <div class="thumbs">
-                    <div class="main-thumbs">
-                      <a
-                        class="img pb-photo-link"
-                        href="/female-escorts-in-dubai/nicole-550120"
-                        ><span class="img-wrapper premium"
-                          ><span
-                            class="verified-image text-left small"
-                            title="Photos Verified by Massage Republic"
-                            ><i class="fa fa-check"></i
-                            ><span>Verified photos</span></span
-                          >
-                          <div class="image-wrapper">
-                            <img
-                              alt="Nicole - escort in Dubai Photo 10 of 10"
-                              class="img-responsive"
-                              height="208"
-                              src="images/nicole-russian-escort-in-moscow-3989270_premium.jpg"
-                              width="200"
-                            />
-                          </div> </span
-                      ></a>
-                    </div>
-                    <div class="other-thumbs pull-left">
-                      <div class="thumb thumb-0">
-                        <a
-                          class="img img-responsive pb-photo-link"
-                          href="/female-escorts-in-dubai/nicole-550120"
-                          ><span class="img-wrapper mini"
-                            ><span
-                              class="verified-image text-left small"
-                              title="Photos Verified by Massage Republic"
-                              ><i class="fa fa-check"></i
-                              ><span>Verified photos</span></span
-                            >
-                            <div class="image-wrapper">
-                              <img
-                                alt="Nicole - escort in Dubai Photo 1 of 10"
-                                class="img-responsive"
-                                height="60"
-                                src="images/karina-russian-escort-in-moscow-3975046_mini.jpg"
-                                width="60"
-                              />
-                            </div> </span
-                        ></a>
-                      </div>
-                      <div class="thumb thumb-1">
-                        <a
-                          class="img img-responsive pb-photo-link"
-                          href="/female-escorts-in-dubai/nicole-550120"
-                          ><span class="img-wrapper mini"
-                            ><span
-                              class="verified-image text-left small"
-                              title="Photos Verified by Massage Republic"
-                              ><i class="fa fa-check"></i
-                              ><span>Verified photos</span></span
-                            >
-                            <div class="image-wrapper">
-                              <img
-                                alt="Nicole - escort in Dubai Photo 2 of 10"
-                                class="img-responsive"
-                                height="60"
-                                src="images/karina-russian-escort-in-moscow-3975058_mini.jpg"
-                                width="60"
-                              />
-                            </div> </span
-                        ></a>
-                      </div>
-                      <div class="thumb thumb-2">
-                        <a
-                          class="img img-responsive pb-photo-link"
-                          href="/female-escorts-in-dubai/nicole-550120"
-                          ><span class="img-wrapper mini"
-                            ><span
-                              class="verified-image text-left small"
-                              title="Photos Verified by Massage Republic"
-                              ><i class="fa fa-check"></i
-                              ><span>Verified photos</span></span
-                            >
-                            <div class="image-wrapper">
-                              <img
-                                alt="Nicole - escort in Dubai Photo 3 of 10"
-                                class="img-responsive"
-                                height="60"
-                                src="images/karina-russian-escort-in-moscow-3975050_mini.jpg"
-                                width="60"
-                              />
-                            </div> </span
-                        ></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="listing-info-wrapper">
-                    <div class="listing-info">
-                      <h2>
-                        <a
-                          class="nostyle-link"
-                          href="/female-escorts-in-dubai/nicole-550120"
-                          title="Nicole, Russian escort in Dubai (8)"
-                          >Nicole</a
-                        >
-                      </h2>
-                      <a
-                        class="nostyle-link"
-                        href="/female-escorts-in-dubai/nicole-550120"
-                      >
-                        <p>
-                          If we haven’t met yet, you may need to prepare
-                          yourself as I’m not for the faint of heart – I don’t
-                          hold back in the bedroom, if you know what I mean. My
-                          body is the perfect playground and I love to play!
-                        </p>
-                      </a>
-                      <p class="no-margin see-more">
-                        <a
-                          class="btn btn-dark"
-                          href="/female-escorts-in-dubai/nicole-550120"
-                          >See more &amp; contact</a
-                        >
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              
-              </div>
-              
-            </div> -->
 
 
-
-
-
-            <!-- strem darkor ne -->
-            <!-- <div class="col-md-3 hidden-sm hidden-xs">
-              <div class="stream-sidebar">
-                <div
-                  class="subscribe-btn-wrapper subscribe-btn-wrapper--small-right"
-                >
-                  <a
-                    class="btn btn-primary btn-lg"
-                    data-btn-link=""
-                    href="/register"
-                    ><i class="fa fa-newspaper"></i> Subscribe</a
-                  >
-                </div>
-                <h3><a href="/female-escort-news-in-dubai">What's new?</a></h3>
-                <ul class="activity-stream activity-records-mini">
-                  <li>
-                    <div class="activity-record new-review mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-heart2"></i>New review for
-                          <a
-                            title="Hanna- Philippines🦋- Independent🦋, Filipino escort in Dubai"
-                            href="/female-escorts-in-dubai/hanna-philippines-independent"
-                            >Hanna- Philippines🦋- Independent🦋</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/hanna-philippines-independent"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Hanna- Philippines🦋- Independent🦋 - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/hanna-filipino-new-in-dubai-filipino-escort-in-dubai-9562182_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          <div class="review-description">
-                            <p>
-                              Saw Hanna today. She looks exactly like her
-                              pictures. Lovely girl who knows how to treat a
-                              man.…
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-review mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-heart2"></i>New review for
-                          <a
-                            title="Emma Dxb, Swiss escort in Dubai"
-                            href="/female-escorts-in-dubai/emmadxb-swiss"
-                            >Emma Dxb</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/emmadxb-swiss"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Emma Dxb - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/emma-dxb-swiss-escort-in-dubai-9031584_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          <div class="review-description">
-                            <p>
-                              Emma is a very nice, beautiful and sweet girl. She
-                              treated me like a king. I had a lot of fun with…
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="webcam-ad">
-                    <div class="activity-record">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-video flicker"></i>Live cam with
-                          <a
-                            href="https://go.massagerepublic.com/cGVyZm9ybWVyPVlzYU1hcmllbCZzb3VyY2U9eF9mZW1hbGUtZXNjb3J0cy1p
-bi1kdWJhaQ==
-"
-                            rel="nofollow"
-                            target="_blank"
-                            >YsaMariel</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="https://go.massagerepublic.com/cGVyZm9ybWVyPVlzYU1hcmllbCZzb3VyY2U9eF9mZW1hbGUtZXNjb3J0cy1p
-bi1kdWJhaQ==
-"
-                            rel="nofollow"
-                            ><span class="img-wrapper mini"
-                              ><img
-                                alt="YsaMariel"
-                                class="img-responsive"
-                                height="53"
-                                src="images/f198f01f723ed0b18ae9cb9db4c1356a_glamour_320x240.jpg"
-                                width="50" /></span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          𝓗𝓮𝓵𝓵𝓸, 𝓮𝓿𝓮𝓻𝔂𝓸𝓷𝓮 𝓲𝓶 𝔂𝓼𝓪𝓶𝓪𝓻𝓲𝓮𝓵, 𝓲𝓯 𝔂𝓸𝓾𝓻'𝓮 𝓵𝓸𝓸𝓴𝓲𝓷𝓰 𝓯𝓸𝓻
-                          𝓯𝓾𝓷 𝓪𝓷𝓭 𝓮𝔁𝓬𝓲𝓽𝓲𝓷𝓰 𝓮𝔁𝓹𝓮𝓻𝓲𝓮𝓷𝓬𝓮 𝔂𝓸𝓾'𝓿𝓮 𝓬𝓸𝓶𝓮 𝓽𝓸 𝓽𝓱𝓮…
-                        </div>
-                      </div>
-                    </div>
-                    <div class="non-escort">non-escort services</div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-review mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-heart2"></i>New review for
-                          <a
-                            title="Annie Best Service, Russian escort in Dubai"
-                            href="/female-escorts-in-dubai/annie-best-service"
-                            >Annie Best Service</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/annie-best-service"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Annie Best Service - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/annie-best-service-japanese-escort-in-dubai-9221378_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          <div class="review-description">
-                            <p>
-                              Best experience ever! Met her 3 times on the same
-                              week because she is the best in the world.…
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-review mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-heart2"></i>New review for
-                          <a
-                            title="Misa Anal Best Service in Downtown, Vietnamese escort in Dubai"
-                            href="/female-escorts-in-dubai/misa-anal-best-service-in-downtown"
-                            >Misa Anal Best Service in Downtown</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/misa-anal-best-service-in-downtown"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Misa Anal Best Service in Downtown - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/misa-anal-best-service-in-downtown-vietnamese-escort-in-dubai-7565288_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          <div class="review-description">
-                            <p>
-                              Met Misa earlier this week. An absolute stellar
-                              experience. The location is nice and quiet, comms…
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="webcam-ad">
-                    <div class="activity-record">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-video flicker"></i>Live cam with
-                          <a
-                            href="https://go.massagerepublic.com/cGVyZm9ybWVyPUthcmxpZUtpbmdzdG9uJnNvdXJjZT14X2ZlbWFsZS1lc2Nv
-cnRzLWluLWR1YmFp
-"
-                            rel="nofollow"
-                            target="_blank"
-                            >KarlieKingston</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="https://go.massagerepublic.com/cGVyZm9ybWVyPUthcmxpZUtpbmdzdG9uJnNvdXJjZT14X2ZlbWFsZS1lc2Nv
-cnRzLWluLWR1YmFp
-"
-                            rel="nofollow"
-                            ><span class="img-wrapper mini"
-                              ><img
-                                alt="KarlieKingston"
-                                class="img-responsive"
-                                height="53"
-                                src="images/37974db1db488858f73b8eee522317fe_glamour_320x240.jpg"
-                                width="50" /></span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          I am a simple and charismatic girl who will amaze you
-                          with her great moves. My voice can captivate…
-                        </div>
-                      </div>
-                    </div>
-                    <div class="non-escort">non-escort services</div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-review mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-heart2"></i>New review for
-                          <a
-                            title="Clara Algerian/FR Independant, French escort in Dubai"
-                            href="/female-escorts-in-dubai/clara-algerian-fr-independant"
-                            >Clara Algerian/FR Independant</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/clara-algerian-fr-independant"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Clara Algerian/FR Independant - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/clara-algerian-independant-french-escort-in-dubai-8882146_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          <div class="review-description">
-                            <p>
-                              Met Clara a couple of months ago! She is super
-                              sweet and super beautiful. Loved her giggly
-                              energy,…
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-review mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-heart2"></i>New review for
-                          <a
-                            title="+15 VIP young fresh girls, Russian escort in Dubai"
-                            href="/female-escorts-in-dubai/the-15-vip-young-fresh-girls"
-                            >+15 VIP young fresh girls</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/the-15-vip-young-fresh-girls"
-                            ><span class="img-wrapper mini">
-                              <div class="image-wrapper">
-                                <img
-                                  alt="+15 VIP young fresh girls - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/15-vip-young-fresh-girls-russian-escort-in-dubai-9627370_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          <div class="review-description">
-                            <p>
-                              On my latest trip to Dubai, I booked a companion
-                              through your agency, and it was an experience to…
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-review mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-heart2"></i>New review for
-                          <a
-                            title="🦋Lesbian Show🦋Mila🦋Windy🦋, Singaporean escort in Dubai"
-                            href="/female-escorts-in-dubai/lesbian-show-mila-windy"
-                            >🦋Lesbian Show🦋Mila🦋Windy🦋</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/lesbian-show-mila-windy"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="🦋Lesbian Show🦋Mila🦋Windy🦋 - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/lesbian-show-mila-windy-singaporean-escort-in-dubai-9602934_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          <div class="review-description">
-                            <p>
-                              😜 wow, meet my lovely friend Mila and she
-                              introduced Windy. These ladies were super. Both
-                              sucked…
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-review mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-heart2"></i>New review for
-                          <a
-                            title="Sophia Luxury GFE &amp; PSE (Independent), Romanian escort in Dubai"
-                            href="/female-escorts-in-dubai/sophia-luxury-gfe-pse-independent"
-                            >Sophia Luxury GFE &amp; PSE (Independent)</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/sophia-luxury-gfe-pse-independent"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Sophia Luxury GFE &amp; PSE (Independent) - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/sophia-luxury-gfe-pse-independent-romanian-escort-in-dubai-9718818_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          <div class="review-description">
-                            <p>Gorgeous lady, perfect skills</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-review mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-heart2"></i>New review for
-                          <a
-                            title="🦋LynLyn in TECOM Alone.RIM.CIM.NURU 🦋, Vietnamese escort in Dubai"
-                            href="/female-escorts-in-dubai/lynlyn-in-tecom-alone-rim-cim-nuru"
-                            >🦋LynLyn in TECOM Alone.RIM.CIM.NURU 🦋</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/lynlyn-in-tecom-alone-rim-cim-nuru"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="🦋LynLyn in TECOM Alone.RIM.CIM.NURU 🦋 - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/lynlyn-in-tecom-alone-rim-cim-nuru-chinese-escort-in-dubai-8574678_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          <div class="review-description">
-                            <p>
-                              I have visited LynLyn recently, nice lication and
-                              room, very friendly and passionate service, super…
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-review mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-heart2"></i>New review for
-                          <a
-                            title="Hot&amp;Sexy Indian milf for Bhabhi lovers, Indian escort in Dubai"
-                            href="/female-escorts-in-dubai/hot-sexy-indian-milf-for-bhabhi-lovers"
-                            >Hot&amp;Sexy Indian milf for Bhabhi lovers</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/hot-sexy-indian-milf-for-bhabhi-lovers"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Hot&amp;Sexy Indian milf for Bhabhi lovers - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/hot-sexy-indian-milf-indian-escort-in-dubai-8724590_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          <div class="review-description">
-                            <p>
-                              Perhaps the one Indian lady who was really good
-                              with me, super sexy and naughty. We kissed and…
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-review mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-heart2"></i>New review for
-                          <a
-                            title="Squirter Annabella, Cuban escort in Dubai"
-                            href="/female-escorts-in-dubai/squirter-annabella"
-                            >Squirter Annabella</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/squirter-annabella"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Squirter Annabella - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/squirter-annabella-cuban-escort-in-dubai-9684788_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          <div class="review-description">
-                            <p>
-                              Having met Annabella many times has always been
-                              great. She’s amazing in bed and she will always
-                              aim…
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-review mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-heart2"></i>New review for
-                          <a
-                            title="Shally - Nuru massage. Deepthroat., Malaysian escort in Dubai"
-                            href="/female-escorts-in-dubai/shally-nuru-massage-deepthroat"
-                            >Shally - Nuru massage. Deepthroat.</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/shally-nuru-massage-deepthroat"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Shally - Nuru massage. Deepthroat. - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/shally-nuru-massage-deepthroat-malaysian-escort-in-dubai-7123628_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          <div class="review-description">
-                            <p>
-                              I met this sexy girl yesterday. She satisfied me
-                              so much at her house. I have no words.
-                              ⭐⭐⭐⭐⭐⭐⭐…
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-review mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-heart2"></i>New review for
-                          <a
-                            title="Squirt Queen Valeria New number, Spanish escort in Dubai"
-                            href="/female-escorts-in-dubai/squirt-queen-valeria-new-number"
-                            >Squirt Queen Valeria New number</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/squirt-queen-valeria-new-number"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Squirt Queen Valeria New number - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/squirt-queen-valeria-martin-business-bay-spanish-escort-in-dubai-9715078_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          <div class="review-description">
-                            <p>
-                              Met vale a few weeks ago in the cozy flat… perfect
-                              and easy access … she was nice and polite. She…
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-review mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-heart2"></i>New review for
-                          <a
-                            title="Mila🦚deepthroat,Nuru,GFE,POPPERS, Singaporean escort in Dubai"
-                            href="/female-escorts-in-dubai/mila-deepthroat-nuru-gfe-poppers"
-                            >Mila🦚deepthroat,Nuru,GFE,POPPERS</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/mila-deepthroat-nuru-gfe-poppers"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Mila🦚deepthroat,Nuru,GFE,POPPERS - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/mila-deepthroat-nuru-rimming-singaporean-escort-in-dubai-8560046_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          <div class="review-description">
-                            <p>
-                              I met with Mila many times.She is pure class.I had
-                              domination session and also MMF.where she called…
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-listing mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-certificate"></i>New escort
-                          <a
-                            title="Sexy Young Maria, Russian escort in Dubai"
-                            href="/female-escorts-in-dubai/sexy-young-maria"
-                            >Sexy Young Maria</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/sexy-young-maria"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Sexy Young Maria - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/sexy-young-maria-russian-escort-in-dubai-9724982_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          Hello, My name is Maria and I'm young, fresh sweet
-                          escort! I'm a very sensual girl who loves to…
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-listing mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-certificate"></i>New escort
-                          <a
-                            title="Indian Model Malaika, Indian escort in Dubai"
-                            href="/female-escorts-in-dubai/indian-model-malaika-indian-indian"
-                            >Indian Model Malaika</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/indian-model-malaika-indian-indian"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Indian Model Malaika - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/indian-model-malaika-indian-escort-in-dubai-9723100_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          Hi Everyone, I am Malaika from India now living in
-                          Dubai for an exotic experience for my clients. I…
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-listing mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-certificate"></i>New escort
-                          <a
-                            title="Tina Full Service, Filipino escort in Dubai"
-                            href="/female-escorts-in-dubai/tina-full-service-asian-filipino"
-                            >Tina Full Service</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/tina-full-service-asian-filipino"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Tina Full Service - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/tina-full-service-filipino-escort-in-dubai-9718920_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          Hello gentlemen! My name is Tina , and I am 25 years
-                          old. . My service: - GFE - Mat oil massage -…
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-listing mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-certificate"></i>New escort
-                          <a
-                            title="Hari, South Korean escort in Dubai (2)"
-                            href="/female-escorts-in-dubai/hari-asian-south-korean"
-                            >Hari</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/hari-asian-south-korean"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Hari - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/hari-south-korean-escort-in-dubai-9718772_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          Xin ch�&nbsp;o các quý ông 💋 Tôi vừa mới đến Dubai từ
-                          h�&nbsp;n quốc mix Việt Nam 🇻🇳 Tôi l�&nbsp; một người
-                          phụ nữ…
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-listing mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-certificate"></i>New escort
-                          <a
-                            title="Semll, Thai escort in Dubai"
-                            href="/female-escorts-in-dubai/semll"
-                            >Semll</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/semll"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Semll - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/semll-thai-escort-in-dubai-9721924_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          💋💋 Hello guys! I am Semll and I am ready to serve
-                          you with the best services in Dubai. I am 22…
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-listing mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-certificate"></i>New escort
-                          <a
-                            title="🦋Sofia🦋 alone.riming.toys.nuru, Vietnamese escort in Dubai"
-                            href="/female-escorts-in-dubai/sofia-alone-riming-toys-nuru"
-                            >🦋Sofia🦋 alone.riming.toys.nuru</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/sofia-alone-riming-toys-nuru"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="🦋Sofia🦋 alone.riming.toys.nuru - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/sofia-vietnamese-escort-in-dubai-9713324_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          just arrived in town🥰💦💦 Hi, I am sofia a high class
-                          girl providing outcall and incall services,…
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-listing mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-certificate"></i>New escort
-                          <a
-                            title="Dakota, Polish escort in Dubai (4)"
-                            href="/female-escorts-in-dubai/dakota-polish"
-                            >Dakota</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/dakota-polish"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Dakota - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/dakota-polish-escort-in-dubai-9712438_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          If you are looking for a girl who enjoys being with
-                          you and welcomes you with a smile, this is me.…
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-listing mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-certificate"></i>New escort
-                          <a
-                            title="❣️Juilya independent hot/❣️800, Turkish escort in Dubai"
-                            href="/female-escorts-in-dubai/juilya-independent-hot-800"
-                            >❣️Juilya independent hot/❣️800</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/juilya-independent-hot-800"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="❣️Juilya independent hot/❣️800 - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/big-boobs-juilya-turkish-escort-in-dubai-9714034_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          Hello lovely I'm from turkiye I love sex, sex is a
-                          hobby for me. My photos are all real, don't…
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-listing mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-certificate"></i>New escort
-                          <a
-                            title="Sawsan, Moroccan escort in Dubai"
-                            href="/female-escorts-in-dubai/sawsan-moroccan"
-                            >Sawsan</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/sawsan-moroccan"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Sawsan - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/sawsan-moroccan-escort-in-dubai-9709962_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          Hello, I'm sawsan a luxury escort. I'm a high class
-                          moroccan companion who reserves herself for…
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-listing mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-certificate"></i>New escort
-                          <a
-                            title="Sofia18y, Sexy Teen, Best Gfe, Russian escort in Dubai"
-                            href="/female-escorts-in-dubai/sofia18y-sexy-teen-best-gfe"
-                            >Sofia18y, Sexy Teen, Best Gfe</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/sofia18y-sexy-teen-best-gfe"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Sofia18y, Sexy Teen, Best Gfe - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/sofia18y-sexy-teen-best-gfe-russian-escort-in-dubai-9708976_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          My name is Sofia I'm a high class escort providing
-                          passionate girlfriend experience. I'm 167cm and…
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-listing mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-certificate"></i>New escort
-                          <a
-                            title="Hot Girls besst service, Turkish escort in Dubai"
-                            href="/female-escorts-in-dubai/hot-girls-besst-service"
-                            >Hot Girls besst service</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/hot-girls-besst-service"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Hot Girls besst service - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/hot-girls-turkish-escort-in-dubai-9701922_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          Hello gentlemen ☺️ independent 💯 % real photo the
-                          best service in your life!!!! Im from turkey 🇹🇷…
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-listing mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-certificate"></i>New escort
-                          <a
-                            title="Ruamy, Malaysian escort in Dubai (2)"
-                            href="/female-escorts-in-dubai/ruamy-c7d0b66e-57d9-4da9-a78a-f971b46bf6bf"
-                            >Ruamy</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/ruamy-c7d0b66e-57d9-4da9-a78a-f971b46bf6bf"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Ruamy - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/ruamy-malaysian-escort-in-dubai-9701678_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          Imagine an elegant person with a graceful posture. My
-                          long silky hair gently curls, and my eyes,…
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-listing mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-certificate"></i>New escort
-                          <a
-                            title="Amina, Russian escort in Dubai (8)"
-                            href="/female-escorts-in-dubai/amina-23b7f3be-7ccf-4fb0-9929-b253b8c3bc17"
-                            >Amina</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/amina-23b7f3be-7ccf-4fb0-9929-b253b8c3bc17"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Amina - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/amina-russian-escort-in-dubai-9699924_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          Hello, dear gentlemen! My name is Amina and I am the
-                          perfect blend of sweetness and spice. My hole…
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-listing mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-certificate"></i>New escort
-                          <a
-                            title="Neha Hottie, Pakistani escort in Dubai"
-                            href="/female-escorts-in-dubai/neha-hottie"
-                            >Neha Hottie</a
-                          >
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/neha-hottie"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Neha Hottie - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/neha-hottie-pakistani-escort-in-dubai-9697366_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          Hello, boys! My name is Neha. I'm 23 years old and
-                          from Pakistan. I'm here to be the treat you need…
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="activity-record new-question-answered mini">
-                      <div class="activity-row">
-                        <div class="headline h3">
-                          <i class="fa fa-question-circle"></i
-                          ><a
-                            title="Hari, South Korean escort in Dubai (2)"
-                            href="/female-escorts-in-dubai/hari-asian-south-korean"
-                            >Hari</a
-                          >
-                          answered a question
-                        </div>
-                        <div class="photo">
-                          <a
-                            class="pb-photo-link"
-                            href="/female-escorts-in-dubai/hari-asian-south-korean"
-                            ><span class="img-wrapper mini"
-                              ><span
-                                class="verified-image text-left small"
-                                title="Photos Verified by Massage Republic"
-                                ><i class="fa fa-check"></i
-                                ><span>Verified photos</span></span
-                              >
-                              <div class="image-wrapper">
-                                <img
-                                  alt="Hari - escort in Dubai"
-                                  class="img-responsive"
-                                  height="60"
-                                  src="images/hari-south-korean-escort-in-dubai-9718772_mini.jpg"
-                                  width="60"
-                                />
-                              </div> </span
-                          ></a>
-                        </div>
-                        <div class="activity-content">
-                          <div class="listing-question">
-                            <p class="question">You do anal sex?</p>
-                            <p class="answer">Yeah dear</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-                <div class="padding-left">
-                  <a href="/female-escort-news-in-dubai">See more</a>
-                </div>
-              </div>
-            </div> -->
-
-
-
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="fb-root"></div>
    
    
     <div class="modal text-center" id="age-check">

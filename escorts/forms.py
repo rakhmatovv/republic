@@ -10,7 +10,6 @@ class SearchForm(forms.Form):
     )
     price_amount = forms.DecimalField(max_digits=10, decimal_places=2, required=False)
 
-    # Use BooleanField for checkboxes, not CheckboxInput
     services_include_all = forms.BooleanField(required=False)
 
     cup_size_id_eq = forms.ChoiceField(
