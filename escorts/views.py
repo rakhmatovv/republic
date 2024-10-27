@@ -27,12 +27,10 @@ def escort_list_view(request):
     if orientation:
         escorts = escorts.filter(orientation=orientation)
 
-    paginator = Paginator(escorts, 7)  # 7 записей на страницу
-    page_number = request.GET.get('page')  # Получаем номер страницы из GET-запроса
-    page_obj = paginator.get_page(page_number)
+      # Получаем номер страницы из GET-запроса
 
     all_photos = []
-    for escort in page_obj.object_list:
+    for escort in escorts:
         photos = [
             escort.photo1.url if escort.photo1 else None,
             escort.photo2.url if escort.photo2 else None,
@@ -48,9 +46,9 @@ def escort_list_view(request):
     orientation_choices = Escort.ORIENTATION_CHOICES
 
     context = {
-        "escorts": page_obj.object_list,
+        "escorts": escorts,
         "photos": all_photos,  
-        "page_obj": page_obj,
+        
         "gender": gender,
         "city_choices": city_choices,
         "nationality_choices": nationality_choices,

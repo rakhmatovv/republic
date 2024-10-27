@@ -3012,31 +3012,31 @@
               </ul>
             </div> {% endcomment %}
             
-            <div  id="google_translate_element"  style="display:block;"></div>
-            
-            <script type="text/javascript">
-              function googleTranslateElementInit() {
-                new google.translate.TranslateElement({
-                  pageLanguage: 'en',
-                  includedLanguages: 'en,es',
-                  layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-                }, 'google_translate_element');
-              }
-            
-              function changeLanguage(lang) {
-                setTimeout(function() {
-                  var select = document.querySelector('select.goog-te-combo');
-                  if (select) {
-                    select.value = lang;
-                    select.dispatchEvent(new Event('change'));
-                  } else {
-                    console.error('Google Translate select element not found.');
-                  }
-                }, 1000); // Увеличено время для инициализации Google Translate
-              }
-            </script>
-            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-            
+            <div id="google_translate_element" style="display:block;"></div>
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,ar', // Только английский и арабский
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+
+  function changeLanguage(lang) {
+    setTimeout(function() {
+      var select = document.querySelector('select.goog-te-combo');
+      if (select) {
+        select.value = lang;
+        select.dispatchEvent(new Event('change'));
+      } else {
+        console.error('Google Translate select element not found.');
+      }
+    }, 1000); // Увеличено время для инициализации Google Translate
+  }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
             </div>
             <a href="{%url 'escorts:escort_list_view'%}" class="logo1"> 
               <img src="{%static 'images/logo.svg'%}" alt="">
