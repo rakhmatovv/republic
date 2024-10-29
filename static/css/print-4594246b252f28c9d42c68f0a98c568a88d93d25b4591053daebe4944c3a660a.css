@@ -1,2 +1,53 @@
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print{*,:after,:before{background:0 0!important;color:#000!important;-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}a:visited{text-decoration:underline}a[href]:after{content:" (" attr(href) ")"}abbr[title]:after{content:" (" attr(title) ")"}a[href^="#"]:after,a[href^="javascript:"]:after{content:""}blockquote,pre{border:1px solid #999}thead{display:table-header-group}blockquote,img,pre,tr{page-break-inside:avoid}img{max-width:100%!important}h2,h3,p{orphans:3;widows:3}h2,h3{page-break-after:avoid}.navbar{display:none}.btn>.caret,.dropup>.btn>.caret{border-top-color:#000!important}.label{border:1px solid #000}.table{border-collapse:collapse!important}.table td,.table th{background-color:#fff!important}.table-bordered td,.table-bordered th{border:1px solid #ddd!important}a{text-decoration:none}#listing-content>dl.dl-inline a:after,#listing-content>dl.dl-inline a:before,.listing-li>.thumbs a:after,.listing-li>.thumbs a:before,.pb-thumbnails a:after,.pb-thumbnails a:before,a.listing-bookmark-toggle:after,a.listing-bookmark-toggle:before{content:''}.listing-li .see-more,body>footer,body>header{display:none}}
+/* Контейнер для Google Translate */
+#google_translate_element {
+    display: inline-block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Стиль для выпадающего списка */
+.goog-te-combo {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 10px 14px;
+    font-size: 16px;
+    border-radius: 30px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Эффект при наведении */
+.goog-te-combo:hover {
+    border-color: #007BFF;
+    box-shadow: 0 0 10px rgba(0,123,255,0.2);
+}
+
+/* Контейнер внутри Google Translate */
+#google_translate_element .goog-te-gadget-simple {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Настройка цвета текста */
+#google_translate_element .goog-te-gadget-simple .goog-te-menu-value {
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Удаление иконки флага */
+#google_translate_element .goog-te-gadget-simple img {
+    display: none;
+}
+
+/* Удаление подчёркивания */
+.goog-te-gadget-simple .goog-te-menu-value span {
+    text-decoration: none;
+}
