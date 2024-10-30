@@ -122,74 +122,22 @@
                                     <div class="visible-xs pb-thumbnails">
                                         <div class="listing-photos-xs">
                                             {% for photo_url in photos %}
-                                            <a class=" pb-photo-link" href="{{ photo_url.url }}">
-                                                <span class="img-wrapper listing">
-                                                    <span class="verified-image text-left small" title="Photos Verified by Massage Republic">
-                                                        <i class="fa fa-check"></i>
-                                                        <span>Verified photos</span>
-                                                    </span>
-                                                    <div class="image-wrapper">
-                                                        <img alt="Sabrina - escort agency in Dubai Photo 1 of 7" class="img-responsive" data-original-height="1800" data-original-width="1200" data-thumb-url="https://d18fr84zq3fgpm.cloudfront.net/sabrina-belarusian-escort-in-dubai-9154368_basic.jpg" height="327" src="{{escort.photo1.url}}" width="238"/>
-                                                    </div>
-                                                </span>
-                                            </a>
+                                                {% if photo_url %}
+                                                    <a class="pb-photo-link" href="{{ photo_url.url }}">
+                                                        <span class="img-wrapper listing">
+                                                            <span class="verified-image text-left small" title="Photos Verified">
+                                                                <i class="fa fa-check"></i>
+                                                                <span>Verified photos</span>
+                                                            </span>
+                                                            <div class="image-wrapper">
+                                                                <img alt="Escort photo" class="img-responsive" src="{{ photo_url.url }}" width="238" height="327"/>
+                                                            </div>
+                                                        </span>
+                                                    </a>
+                                                {% endif %}
                                             {% endfor %}
-                                            <!-- <a class=" pb-photo-link" href="{{escort.photo2.url}}">
-                                                <span class="img-wrapper listing">
-                                                    <span class="verified-image text-left small" title="Photos Verified by Massage Republic">
-                                                        <i class="fa fa-check"></i>
-                                                        <span>Verified photos</span>
-                                                    </span>
-                                                    <div class="image-wrapper">
-                                                        <img alt="Sabrina - escort agency in Dubai Photo 2 of 7" class="img-responsive" data-original-height="1800" data-original-width="1200" data-thumb-url="https://d18fr84zq3fgpm.cloudfront.net/sabrina-belarusian-escort-in-dubai-9154370_basic.jpg" height="327" src="{{escort.photo2.url}}" width="238"/>
-                                                    </div>
-                                                </span>
-                                            </a>
-                                            <a class=" pb-photo-link" href="{{escort.photo3.url}}">
-                                                <span class="img-wrapper listing">
-                                                    <span class="verified-image text-left small" title="Photos Verified by Massage Republic">
-                                                        <i class="fa fa-check"></i>
-                                                        <span>Verified photos</span>
-                                                    </span>
-                                                    <div class="image-wrapper">
-                                                        <img alt="Sabrina - escort agency in Dubai Photo 3 of 7" class="img-responsive" data-original-height="1800" data-original-width="1200" data-thumb-url="https://d18fr84zq3fgpm.cloudfront.net/sabrina-belarusian-escort-in-dubai-9154372_basic.jpg" height="327" src="{{escort.photo3.url}}" width="238"/>
-                                                    </div>
-                                                </span>
-                                            </a>
-                                            <a class=" pb-photo-link" href="{{escort.photo4.url}}">
-                                                <span class="img-wrapper listing">
-                                                    <span class="verified-image text-left small" title="Photos Verified by Massage Republic">
-                                                        <i class="fa fa-check"></i>
-                                                        <span>Verified photos</span>
-                                                    </span>
-                                                    <div class="image-wrapper">
-                                                        <img alt="Sabrina - escort agency in Dubai Photo 4 of 7" class="img-responsive" data-original-height="1800" data-original-width="1200" data-thumb-url="https://d18fr84zq3fgpm.cloudfront.net/sabrina-belarusian-escort-in-dubai-9154374_basic.jpg" height="327" src="{{escort.photo4.url}}" width="238"/>
-                                                    </div>
-                                                </span>
-                                            </a><br><br>
-                                            <a class=" pb-photo-link" href="{{escort.photo5.url}}">
-                                                <span class="img-wrapper listing">
-                                                    <span class="verified-image text-left small" title="Photos Verified by Massage Republic">
-                                                        <i class="fa fa-check"></i>
-                                                        <span>Verified photos</span>
-                                                    </span>
-                                                    <div class="image-wrapper">
-                                                        <img alt="Sabrina - escort agency in Dubai Photo 5 of 7" class="img-responsive" data-original-height="1800" data-original-width="1200" data-thumb-url="https://d18fr84zq3fgpm.cloudfront.net/sabrina-belarusian-escort-in-dubai-9154376_basic.jpg" height="327" src="{{escort.photo5.url}}" width="238"/>
-                                                    </div>
-                                                </span>
-                                            </a><br> -->
-                                            <a class=" pb-photo-link" href="{{escort.photo5.url}}">
-                                                <span class="img-wrapper listing">
-                                                    <span class="verified-image text-left small" title="Photos Verified by Massage Republic">
-                                                        <i class="fa fa-check"></i>
-                                                        <span>Verified photos</span>
-                                                    </span>
-                                                    <div class="image-wrapper">
-                                                        <img alt="Sabrina - escort agency in Dubai Photo 5 of 7" class="img-responsive" data-original-height="1800" data-original-width="1200" data-thumb-url="https://d18fr84zq3fgpm.cloudfront.net/sabrina-belarusian-escort-in-dubai-9154376_basic.jpg" height="327" src="{{escort.photo5.url}}" width="238"/>
-                                                    </div>
-                                                </span>
-                                            </a>
                                         </div>
+                                        
                                     </div>
                                     <div class="description">
                                         <p>{{escort.description}}</p>
