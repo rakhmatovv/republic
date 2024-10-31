@@ -3,15 +3,20 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from django.db.models import Q
 
+
+
 def escort_list_view(request):
+    # Получаем список эскортов с сортировкой по премиум статусу
     escorts = Escort.objects.all().order_by("-is_premium")
 
+    # Получаем значения фильтров из GET-запроса
     gender = request.GET.get("gender")
     city = request.GET.get("city")
     nationality = request.GET.get("nationality")
-    ethnicity = request.GET.get("ethnicity")
+    language = request.GET.get("language")  # ID языка из запроса
     orientation = request.GET.get("orientation")
 
+    # Фильтрация по заданным критериям
     if gender:
         escorts = escorts.filter(gender=gender)
 
@@ -21,14 +26,13 @@ def escort_list_view(request):
     if nationality:
         escorts = escorts.filter(nationality_id=nationality)
 
-    if ethnicity:
-        escorts = escorts.filter(ethnicity=ethnicity)
+    if language:
+        escorts = escorts.filter(languages__id=language)  # Используем `languages__id` для фильтрации
 
     if orientation:
         escorts = escorts.filter(orientation=orientation)
 
-      # Получаем номер страницы из GET-запроса
-
+    # Получаем фотографии для отображения
     all_photos = []
     for escort in escorts:
         photos = [
@@ -40,27 +44,28 @@ def escort_list_view(request):
         ]
         all_photos.extend(filter(None, photos))  # Добавляем только непустые фотографии
 
+    # Получаем списки вариантов для фильтров
     city_choices = Escort.objects.values_list("city", flat=True).distinct()
     nationality_choices = Nationality.objects.all()
-    ethnicity_choices = Escort.ETHNICITY_CHOICES
+    language_choices = Language.objects.all()  # Получаем все языки
     orientation_choices = Escort.ORIENTATION_CHOICES
 
+    # Передаем данные в контекст
     context = {
         "escorts": escorts,
-        "photos": all_photos,  
-        
+        "photos": all_photos,
         "gender": gender,
         "city_choices": city_choices,
         "nationality_choices": nationality_choices,
-        "ethnicity_choices": ethnicity_choices,
+        "language_choices": language_choices,
         "orientation_choices": orientation_choices,
     }
 
     return render(request, "index.html", context)
 
 def what_news(request):
-    premium_escorts = Escort.objects.filter(is_premium=True)[:5]  
-    return render(request, 'female-duba.html', {'escorts': premium_escorts})
+    premium_escorts = Escort.objects.filter(is_premium=True)[:5]
+    return render(request, "female-duba.html", {"escorts": premium_escorts})
 
 
 def escort_detail(request, escort_id):

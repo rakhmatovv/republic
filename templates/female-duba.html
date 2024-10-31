@@ -1,6 +1,48 @@
 {% extends "base.html" %}
 
 {%block content%}
+<style>.listings-spots {
+    margin: 20px 0; /* Отступ сверху и снизу для секции */
+}
+
+.d-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Две колонки по умолчанию */
+    gap: 15px; /* Промежуток между карточками */
+    justify-items: center; /* Центрируем карточки по горизонтали */
+}
+
+@media (min-width: 768px) {
+    .d-grid {
+        grid-template-columns: repeat(3, 1fr); /* Три колонки на экранах шире 768px */
+    }
+}
+
+@media (min-width: 992px) {
+    .d-grid {
+        grid-template-columns: repeat(4, 1fr); /* Четыре колонки на экранах шире 992px */
+    }
+}
+
+.card {
+    background-color: #56545425; /* Цвет фона карточки */
+    border: 1px solid #ddd; /* Обводка карточки */
+    border-radius: 5px; /* Скругление углов */
+    overflow: hidden; /* Обрезка содержимого, выходящего за границы карточки */
+    width: 100%; /* Ширина карточки 100% от родительского элемента */
+    max-width: 100%; /* Максимальная ширина карточки */
+}
+
+.spot-img-wrapper {
+    display: block; /* Делаем обертку блочным элементом */
+    overflow: hidden; /* Обрезаем изображение */
+}
+
+.main-img {
+    width: 100%; /* Ширина изображения 100% от родительского элемента */
+    height: auto; /* Автоматическая высота */
+}
+</style>
 <body data-action="index" data-turbolinks="false">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-49CRE37SFG"></script>
     <script data-turbolinks-eval="false">
@@ -32,28 +74,25 @@
                 <div class="mx-n3">
                     <div class="row">
                         <section class="listings-spots">
-                            <h3 class="pb-2 pl-3 mt-3 mx-auto"><span class="pr-2">This week's premium profiles</span></h3>
-                            <div class="card bg-light mb-3"> <!-- Большая карточка -->
-                                <div class="card-body">
-                                    <div class="d-flex flex-row justify-content-center"> <!-- Центрируем карточки -->
-                                        {% for escort in escorts %}
-                                        <div class="card mb-3 mx-2" style="min-width: 200px;"> <!-- Отступ между карточками -->
-                                            <a class="d-block spot-img-wrapper" href="{% url 'escorts:escort_detail' escort.id %}">
-                                                <img class="main-img" height="220" loading="lazy" src="{{ escort.photo1.url }}" alt="{{ escort.name }}" />
-                                            </a>
-                                            <div class="card-body px-2">
-                                                <h3 class="m-0 px-2 py-3 text-center"> <!-- Центрируем текст -->
-                                                    <a href="https://massagerepublic.com/female-escorts-in-dubai/milana-20yo-business-bay">
-                                                        {{ escort.name }}
-                                                    </a>
-                                                </h3>
-                                            </div>
+                            <h3 class="pb-2 pl-3 mt-3 mx-auto">
+                                <span class="pr-2">This week&#39;s deluxe profiles</span>
+                            </h3>
+                            <div class="d-grid">
+                                {% for escort in escorts %}
+                                    <div class="card">
+                                        <a class="d-block spot-img-wrapper" href="{% url 'escorts:escort_detail' escort.id %}">
+                                            <img class="main-img" height="220" loading="lazy" src="{{ escort.photo1.url }}" alt="{{ escort.name }}" />
+                                        </a>
+                                        <div class="card-body px-2">
+                                            <h3 class="m-0 px-2 py-3">
+                                                <a href="{% url 'escorts:escort_detail' escort.id %}">{{ escort.name }}</a>
+                                            </h3>
                                         </div>
-                                        {% endfor %}
                                     </div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </section>
+                        
                         <hr class="pb-3" />
                     </div>
                     
